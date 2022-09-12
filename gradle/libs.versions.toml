@@ -1,5 +1,7 @@
 [versions]
+android = "7.4.0-alpha09"
 androidxCore = "1.9.0"
+kotlin = "1.6.21"
 androidxLifecycle = "2.3.1"
 androidxActivity = "1.3.1"
 androidxCompose = "1.2.0-beta01"
@@ -20,4 +22,10 @@ androidxTestEspressoCore = { module = "androidx.test.espresso:espresso-core", ve
 androidxComposeUiTestJunit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidxCompose" }
 androidxComposeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidxCompose" }
 androidxComposeUiTestManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidxCompose" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "android" }
+androidLibrary = { id = "com.android.library", version.ref = "android" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint" }
 

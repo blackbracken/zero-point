@@ -1,74 +1,74 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    id("com.android.application") version "7.4.0-alpha09"
-    kotlin("android") version "1.6.20"
+  alias(libs.plugins.androidApplication)
+  kotlin("android")
 }
 
 android {
-    namespace = "black,bracken.zeropoint"
-    compileSdk = 33
+  namespace = "black,bracken.zeropoint"
+  compileSdk = 33
 
-    defaultConfig {
-        applicationId = "black.bracken.zeropoint"
-        minSdk = 28
-        targetSdk = 33
+  defaultConfig {
+    applicationId = "black.bracken.zeropoint"
+    minSdk = 28
+    targetSdk = 33
 
-        versionCode = 1
-        versionName = "1.0"
+    versionCode = 1
+    versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+    vectorDrawables {
+      useSupportLibrary = true
     }
+  }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
+  buildTypes {
+    release {
+      isMinifyEnabled = false
+      proguardFiles(
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro"
+      )
     }
+  }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+  }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
 
-    buildFeatures {
-        compose = true
-    }
+  buildFeatures {
+    compose = true
+  }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0-beta01"
-    }
+  composeOptions {
+    kotlinCompilerExtensionVersion = "1.2.0-beta01"
+  }
 
-    packagingOptions {
-        jniLibs.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
-    }
+  packagingOptions {
+    jniLibs.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+  }
 }
 
 dependencies {
-    implementation(libs.androidxCoreKtx)
-    implementation(libs.androidxLifecycleRuntimeKtx)
-    implementation(libs.androidxActivityCompose)
-    implementation(libs.androidxComposeUi)
-    implementation(libs.androidxComposeUiToolingPreview)
-    implementation(libs.androidxComposeMaterial)
+  implementation(libs.androidxCoreKtx)
+  implementation(libs.androidxLifecycleRuntimeKtx)
+  implementation(libs.androidxActivityCompose)
+  implementation(libs.androidxComposeUi)
+  implementation(libs.androidxComposeUiToolingPreview)
+  implementation(libs.androidxComposeMaterial)
 
-    testImplementation(libs.junit)
+  testImplementation(libs.junit)
 
-    androidTestImplementation(libs.androidxTestExtJunit)
-    androidTestImplementation(libs.androidxTestEspressoCore)
-    androidTestImplementation(libs.androidxComposeUiTestJunit4)
-    debugImplementation(libs.androidxComposeUiTooling)
-    debugImplementation(libs.androidxComposeUiTestManifest)
+  androidTestImplementation(libs.androidxTestExtJunit)
+  androidTestImplementation(libs.androidxTestEspressoCore)
+  androidTestImplementation(libs.androidxComposeUiTestJunit4)
+  debugImplementation(libs.androidxComposeUiTooling)
+  debugImplementation(libs.androidxComposeUiTestManifest)
 }
