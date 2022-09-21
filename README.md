@@ -8,5 +8,4 @@
 
 ## Set up
 
-- `./gradlew addKtlintCheckGitPreCommitHook`
-  - format on pre-commit with ktlint
+- `./gradlew addKtlintCheckGitPreCommitHook` (ktlint-gradle)

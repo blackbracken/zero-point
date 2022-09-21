@@ -19,4 +19,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "ZeroPoint"
 
-include(":app")
+include(
+  ":app",
+  ":gradle:plugins",
+  ":testing",
+)

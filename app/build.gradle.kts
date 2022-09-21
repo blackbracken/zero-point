@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace = "black,bracken.zeropoint"
+  namespace = "black.bracken.zeropoint"
   compileSdk = 33
 
   defaultConfig {
