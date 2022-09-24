@@ -27,7 +27,7 @@ gradlePlugin {
     }
 
     register("androidCompose") {
-      id = "zeropoint.primitive.androidCompose"
+      id = "zeropoint.primitive.android.compose"
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.AndroidComposePlugin"
     }
 
@@ -37,7 +37,7 @@ gradlePlugin {
     }
 
     register("testJvm") {
-      id = "zeropoint.primitive.testJvm"
+      id = "zeropoint.primitive.test.jvm"
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.TestJvmPlugin"
     }
   }

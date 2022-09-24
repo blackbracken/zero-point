@@ -3,9 +3,9 @@
 plugins {
   kotlin("android")
   id("zeropoint.primitive.androidApplication")
-  id("zeropoint.primitive.androidCompose")
+  id("zeropoint.primitive.android.compose")
   id("zeropoint.primitive.test")
-  id("zeropoint.primitive.testJvm")
+  id("zeropoint.primitive.test.jvm")
 }
 
 android.namespace = "black.bracken.zeropoint.app"
