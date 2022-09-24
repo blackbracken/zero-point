@@ -36,10 +36,9 @@ fun Project.android(action: TestedExtension.() -> Unit) {
 
 fun Project.setupAndroid() {
   android {
-//    namespace?.let {
-//      this.namespace = it
-//    }
-    namespace = "black.bracken.zeropoint"
+    if (namespace != null) {
+      this.namespace = namespace
+    }
     compileSdkVersion(33)
 
     defaultConfig {

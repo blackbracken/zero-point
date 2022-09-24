@@ -8,6 +8,12 @@ plugins {
   id("zeropoint.primitive.testJvm")
 }
 
+android.namespace = "black.bracken.zeropoint.app"
+
+dependencies {
+  implementation(project(":feature:choosesource"))
+}
+
 /*
 android {
   namespace = "black.bracken.zeropoint"
