@@ -8,4 +8,4 @@
 
 ## Set up
 
-- `./gradlew addKtlintCheckGitPreCommitHook` (ktlint-gradle)
+- `./gradlew addKtlintFormatGitPreCommitHook` (ktlint-gradle)
