@@ -53,6 +53,10 @@ fun DependencyHandlerScope.testImplementation(
   add("testImplementation", artifact.get())
 }
 
+fun DependencyHandlerScope.unsafeTestImplementation(artifact: Any) {
+  add("testImplementation", artifact)
+}
+
 private fun DependencyHandlerScope.api(
   artifact: Optional<Provider<MinimalExternalModuleDependency>>
 ) {
