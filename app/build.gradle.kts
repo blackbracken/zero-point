@@ -1,10 +1,12 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-  alias(libs.plugins.androidApplication)
+  id("zeropoint.primitive.android")
+  id("zeropoint.primitive.androidCompose")
   kotlin("android")
 }
 
+/*
 android {
   namespace = "black.bracken.zeropoint"
   compileSdk = 33
@@ -72,3 +74,4 @@ dependencies {
   debugImplementation(libs.androidxComposeUiTooling)
   debugImplementation(libs.androidxComposeUiTestManifest)
 }
+*/

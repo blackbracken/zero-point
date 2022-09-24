@@ -12,6 +12,8 @@ junit = "4.13.2"
 ktlintGradle = "11.0.0"
 
 [libraries]
+androidGradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android" }
+kotlinGradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinxCoroutinesTest = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 androidxCoreKtx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }

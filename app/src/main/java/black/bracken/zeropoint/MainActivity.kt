@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
               Spacer(Modifier.height(8.dp))
             }
 
-            Greeting("Android")
+            Greeting("Zeropoint")
           }
         }
       }
