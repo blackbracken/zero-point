@@ -20,6 +20,7 @@ package black.bracken.zeropoint.buildlogic.dsl
 
 // cf. https://github.com/DroidKaigi/conference-app-2022/blob/main/gradle/plugins/src/main/kotlin/io/github/droidkaigi/confsched2022/primitive/AndroidGradleDsl.kt
 
+import com.android.build.api.dsl.LibraryExtension
 import com.android.build.gradle.TestedExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.Project
@@ -27,6 +28,10 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
 fun Project.androidApplication(action: BaseAppModuleExtension.() -> Unit) {
+  extensions.configure(action)
+}
+
+fun Project.androidLibrary(action: LibraryExtension.() -> Unit) {
   extensions.configure(action)
 }
 
@@ -42,7 +47,7 @@ fun Project.setupAndroid() {
     compileSdkVersion(33)
 
     defaultConfig {
-      applicationId = "black.bracken.zeropoint"
+//      applicationId = "black.bracken.zeropoint"
       minSdk = 28
       targetSdk = 33
 
@@ -69,6 +74,8 @@ fun Project.setupAndroid() {
   }
 
   dependencies {
+    implementation(libs.findLibrary("androidxCoreKtx"))
+
     testImplementation(libs.findLibrary("junit"))
 
     androidTestImplementation(libs.findLibrary("androidxTestExtJunit"))

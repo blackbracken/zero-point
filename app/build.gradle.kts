@@ -2,7 +2,7 @@
 
 plugins {
   kotlin("android")
-  id("zeropoint.primitive.android")
+  id("zeropoint.primitive.androidApplication")
   id("zeropoint.primitive.androidCompose")
   id("zeropoint.primitive.test")
   id("zeropoint.primitive.testJvm")

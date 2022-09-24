@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 package black.bracken.zeropoint.buildlogic.primitive
 
 import black.bracken.zeropoint.buildlogic.dsl.android
@@ -16,17 +18,19 @@ class AndroidComposePlugin : Plugin<Project> {
         buildFeatures.compose = true
         composeOptions {
           kotlinCompilerExtensionVersion =
-            libs.findVersion("androidxCompose").get().toString()
+            libs.findVersion("androidxComposeCompiler").get().toString()
         }
       }
 
       dependencies {
-        implementation(libs.findLibrary("androidxActivityCompose"))
+        implementation(libs.findLibrary("androidxComposeRuntime"))
         implementation(libs.findLibrary("androidxComposeUi"))
         implementation(libs.findLibrary("androidxComposeUiToolingPreview"))
         implementation(libs.findLibrary("androidxComposeMaterial"))
+        implementation(libs.findLibrary("androidxActivityCompose"))
 
         androidTestImplementation(libs.findLibrary("androidxComposeUiTestJunit4"))
+
         debugImplementation(libs.findLibrary("androidxComposeUiTooling"))
         debugImplementation(libs.findLibrary("androidxComposeUiTestManifest"))
       }

@@ -1,5 +1,5 @@
 plugins {
-  id("zeropoint.primitive.android")
+  id("zeropoint.primitive.androidLibrary")
   id("zeropoint.primitive.androidCompose")
 }
 

@@ -16,9 +16,14 @@ dependencies {
 
 gradlePlugin {
   plugins {
-    register("android") {
-      id = "zeropoint.primitive.android"
-      implementationClass = "black.bracken.zeropoint.buildlogic.primitive.AndroidPlugin"
+    register("androidApplication") {
+      id = "zeropoint.primitive.androidApplication"
+      implementationClass = "black.bracken.zeropoint.buildlogic.primitive.AndroidApplicationPlugin"
+    }
+
+    register("androidLibrary") {
+      id = "zeropoint.primitive.androidLibrary"
+      implementationClass = "black.bracken.zeropoint.buildlogic.primitive.AndroidLibraryPlugin"
     }
 
     register("androidCompose") {

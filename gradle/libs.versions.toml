@@ -6,6 +6,7 @@ kotlinxCoroutines = "1.6.4"
 androidxLifecycle = "2.3.1"
 androidxActivity = "1.3.1"
 androidxCompose = "1.2.0-beta01"
+androidxComposeCompiler = "1.3.1"
 androidxTestExt = "1.1.3"
 androidxTestEspresso = "3.4.0"
 junit = "4.13.2"
@@ -13,16 +14,21 @@ ktlintGradle = "11.0.0"
 kotest = "5.4.2"
 
 [libraries]
+androidxComposeCompiler = { module = "androidx.compose.compiler:compiler", version.ref = "androidxComposeCompiler" }
+
 androidGradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android" }
 kotlinGradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinxCoroutinesTest = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 androidxCoreKtx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
 androidxLifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
+
 androidxActivityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
+androidxComposeRuntime = { module = "androidx.compose.runtime:runtime", version.ref = "androidxCompose" }
 androidxComposeUi = { module = "androidx.compose.ui:ui", version.ref = "androidxCompose" }
 androidxComposeUiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "androidxCompose" }
 androidxComposeMaterial = { module = "androidx.compose.material:material", version.ref = "androidxCompose" }
+
 junit = { module = "junit:junit", version.ref = "junit" }
 androidxTestExtJunit = { module = "androidx.test.ext:junit", version.ref = "androidxTestExt" }
 androidxTestEspressoCore = { module = "androidx.test.espresso:espresso-core", version.ref = "androidxTestEspresso" }
