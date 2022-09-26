@@ -1,7 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-  kotlin("android")
   id("zeropoint.primitive.androidApplication")
   id("zeropoint.primitive.android.compose")
   id("zeropoint.primitive.test")
