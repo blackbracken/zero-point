@@ -31,6 +31,11 @@ gradlePlugin {
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.AndroidComposePlugin"
     }
 
+    register("androidHilt") {
+      id = "zeropoint.primitive.android.hilt"
+      implementationClass = "black.bracken.zeropoint.buildlogic.primitive.AndroidHiltPlugin"
+    }
+
     register("test") {
       id = "zeropoint.primitive.test"
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.TestPlugin"

@@ -11,6 +11,7 @@ class AndroidApplicationPlugin : Plugin<Project> {
     with(target) {
       with(pluginManager) {
         apply("org.jetbrains.kotlin.android")
+        apply("org.jetbrains.kotlin.kapt")
         apply("com.android.application")
       }
 

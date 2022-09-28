@@ -76,6 +76,11 @@ fun Project.setupAndroid() {
   dependencies {
     implementation(libs.findLibrary("androidxCoreKtx"))
 
+    implementation(libs.findLibrary("androidxLifecycleViewModelKtx"))
+    implementation(libs.findLibrary("androidxLifecycleViewModelCompose"))
+    implementation(libs.findLibrary("androidxLifecycleViewModelSavedState"))
+    kapt(libs.findLibrary("androidxLifecycleCompiler"))
+
     testImplementation(libs.findLibrary("junit"))
 
     androidTestImplementation(libs.findLibrary("androidxTestExtJunit"))
