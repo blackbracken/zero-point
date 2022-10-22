@@ -1,5 +1,5 @@
 [versions]
-android = "7.4.0-beta01"
+android = "7.4.0-beta02"
 androidxCore = "1.9.0"
 kotlin = "1.6.21"
 kotlinxCoroutines = "1.6.4"
@@ -48,6 +48,8 @@ androidxComposeUiTooling = { module = "androidx.compose.ui:ui-tooling", version.
 androidxComposeUiTestManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidxCompose" }
 
 kotestAssertion = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+
+detektGradlePlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "android" }

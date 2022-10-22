@@ -9,6 +9,7 @@ plugins {
 buildscript {
   dependencies {
     classpath(libs.hiltGradlePlugin)
+    classpath(libs.detektGradlePlugin)
   }
 }
 
