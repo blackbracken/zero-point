@@ -3,58 +3,36 @@ package black.bracken.zeropoint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import black.bracken.zeropoint.feature.setup.setupNavigation
+import black.bracken.zeropoint.featurecommon.navigation.direction.SetupDirection
 import black.bracken.zeropoint.ui.theme.ZeroPointTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
     setContent {
       ZeroPointTheme {
-        Surface(
-          modifier = Modifier.fillMaxSize(),
-          color = MaterialTheme.colors.background
-        ) {
-          Column {
-            repeat(4) {
-              Button(onClick = {}) {
-                Text("Button 1")
-              }
-
-              Spacer(Modifier.height(8.dp))
-            }
-
-            Greeting("Zeropoint")
-          }
-        }
+        ZeroPointNavRouter()
       }
     }
   }
 }
 
 @Composable
-fun Greeting(name: String) {
-  Text(text = "Hello $name!")
-}
+private fun ZeroPointNavRouter() {
+  val navController = rememberNavController()
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-  ZeroPointTheme {
-    Greeting("Android")
+  NavHost(
+    navController = navController,
+    startDestination = SetupDirection.Root.destinationId,
+  ) {
+    setupNavigation(navController)
   }
 }
