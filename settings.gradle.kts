@@ -26,5 +26,6 @@ include(
   ":app",
   ":gradle:plugins",
   ":testing",
-  ":feature:choosesource",
+  ":featurecommon",
+  ":feature:setup",
 )

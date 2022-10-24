@@ -12,5 +12,6 @@ plugins {
 android.namespace = "black.bracken.zeropoint.app"
 
 dependencies {
-  implementation(project(":feature:choosesource"))
+  implementation(project(":featurecommon"))
+  implementation(project(":feature:setup"))
 }

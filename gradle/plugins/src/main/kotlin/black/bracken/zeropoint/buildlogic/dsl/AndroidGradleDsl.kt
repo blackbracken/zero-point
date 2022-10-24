@@ -26,6 +26,7 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
+import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 
 fun Project.androidApplication(action: BaseAppModuleExtension.() -> Unit) {
   extensions.configure(action)
@@ -46,8 +47,13 @@ fun Project.setupAndroid() {
     }
     compileSdkVersion(33)
 
+    packagingOptions {
+      resources {
+        excludes += "META-INF/gradle/incremental.annotation.processors"
+      }
+    }
+
     defaultConfig {
-//      applicationId = "black.bracken.zeropoint"
       minSdk = 28
       targetSdk = 33
 
@@ -81,9 +87,22 @@ fun Project.setupAndroid() {
     implementation(libs.findLibrary("androidxLifecycleViewModelSavedState"))
     kapt(libs.findLibrary("androidxLifecycleCompiler"))
 
+    implementation(libs.findLibrary("androidxNavigationUi"))
+    implementation(libs.findLibrary("androidxNavigationUiKtx"))
+    implementation(libs.findLibrary("androidxNavigationCompose"))
+
+    implementation(libs.findLibrary("hiltAndroid"))
+    kapt(libs.findLibrary("hiltAndroidCompiler"))
+
+    implementation(libs.findLibrary("hiltNavigationCompose"))
+
     testImplementation(libs.findLibrary("junit"))
 
     androidTestImplementation(libs.findLibrary("androidxTestExtJunit"))
     androidTestImplementation(libs.findLibrary("androidxTestEspressoCore"))
+  }
+
+  extensions.configure<KaptExtension> {
+    correctErrorTypes = true
   }
 }
