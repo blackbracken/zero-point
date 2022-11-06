@@ -7,4 +7,5 @@ android.namespace = "black.bracken.zeropoint.feature.setup"
 
 dependencies {
   implementation(project(":featurecommon"))
+  implementation(project(":resource"))
 }

@@ -28,4 +28,5 @@ include(
   ":testing",
   ":featurecommon",
   ":feature:setup",
+  ":resource",
 )

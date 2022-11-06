@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/featurecommon" />
             <option value="$PROJECT_DIR$/gradle" />
             <option value="$PROJECT_DIR$/gradle/plugins" />
+            <option value="$PROJECT_DIR$/resource" />
             <option value="$PROJECT_DIR$/testing" />
           </set>
         </option>
