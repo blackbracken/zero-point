@@ -12,15 +12,13 @@ import androidx.compose.ui.graphics.Color
 private val DarkColorPalette = darkColors(
   primary = ValorantRed,
   onPrimary = Color.White,
-
   secondary = ValorantRed,
 )
 
 @SuppressLint("ConflictingOnColor")
 private val LightColorPalette = lightColors(
   primary = ValorantRed,
-  onPrimary = Color.Black,
-
+  onPrimary = Color.White,
   secondary = ValorantRed,
 )
 
