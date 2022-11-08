@@ -3,6 +3,7 @@ package black.bracken.zeropoint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -19,7 +20,9 @@ class MainActivity : ComponentActivity() {
 
     setContent {
       ZeroPointTheme {
-        ZeroPointNavRouter()
+        Surface {
+          ZeroPointNavRouter()
+        }
       }
     }
   }
