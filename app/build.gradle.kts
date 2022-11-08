@@ -8,6 +8,13 @@ plugins {
   id("zeropoint.primitive.test.jvm")
   id("zeropoint.primitive.detekt")
 }
+android {
+  buildTypes {
+    getByName("release") {
+      signingConfig = signingConfigs.getByName("debug")
+    }
+  }
+}
 
 android.namespace = "black.bracken.zeropoint.app"
 
