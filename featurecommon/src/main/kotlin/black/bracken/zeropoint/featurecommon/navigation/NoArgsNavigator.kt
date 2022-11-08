@@ -3,13 +3,13 @@ package black.bracken.zeropoint.featurecommon.navigation
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavController
 
-class NoArgNavigator(
+class NoArgsNavigator(
   override val destinationId: String,
-) : Navigator<NoArg> {
+) : Navigator<NoArgs> {
 
   override val arguments: List<NamedNavArgument> = emptyList()
 
-  override fun navigate(navController: NavController, param: NoArg) {
+  override fun navigate(navController: NavController, param: NoArgs) {
     navController.navigate(destinationId)
   }
 

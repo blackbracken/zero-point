@@ -3,7 +3,7 @@ package black.bracken.zeropoint.featurecommon.navigation
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavController
 
-typealias NoArg = Unit
+object NoArgs
 
 interface Navigator<in P> {
   val destinationId: String
