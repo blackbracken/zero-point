@@ -4,9 +4,9 @@ import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.text.toUpperCase
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import black.bracken.zeropoint.util.extension.emitRenewedIn
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 
 data class ChooseSourceUiState(
   val opensInputPlayerNameModalBottomSheet: Boolean = false,
@@ -35,40 +35,37 @@ class ChooseSourceViewModel : ViewModel() {
   val uiState get() = _uiState.asStateFlow()
 
   fun onChangeRiotId(riotId: String) {
-    viewModelScope.launch {
-      _uiState.emit(
-        uiState.value.copy(riotId = riotId)
-      )
+    _uiState.emitRenewedIn(viewModelScope) { uiState ->
+      uiState.copy(riotId = riotId)
     }
   }
 
   fun onChangeTagline(tagline: String) {
-    viewModelScope.launch {
-      _uiState.emit(
-        uiState.value.copy(tagline = tagline.toUpperCase(LocaleList.current))
+    _uiState.emitRenewedIn(viewModelScope) { uiState ->
+      uiState.copy(
+        tagline = tagline.toUpperCase(LocaleList.current)
       )
     }
   }
 
   fun onConfirmPlayerName() {
+    _uiState.emitRenewedIn(viewModelScope) { uiState ->
+      uiState.copy(
+        tagline = uiState.tagline,
+      )
+    }
     // TODO not implemented yet
   }
 
   fun onClickRemoteButton() {
-    viewModelScope.launch {
-      _uiState.emit(
-        uiState.value.copy(opensInputPlayerNameModalBottomSheet = true)
-      )
+    _uiState.emitRenewedIn(viewModelScope) { uiState ->
+      uiState.copy(opensInputPlayerNameModalBottomSheet = true)
     }
   }
 
   fun onCloseBottomSheet() {
-    viewModelScope.launch {
-      _uiState.emit(
-        uiState.value.copy(
-          opensInputPlayerNameModalBottomSheet = false
-        )
-      )
+    _uiState.emitRenewedIn(viewModelScope) { uiState ->
+      uiState.copy(opensInputPlayerNameModalBottomSheet = false)
     }
   }
 
