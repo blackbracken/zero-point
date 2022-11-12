@@ -29,4 +29,5 @@ include(
   ":featurecommon",
   ":feature:setup",
   ":resource",
+  ":util",
 )

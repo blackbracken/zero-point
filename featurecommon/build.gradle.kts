@@ -4,3 +4,7 @@ plugins {
 }
 
 android.namespace = "black.bracken.zeropoint.featurecommon"
+
+dependencies {
+  api(project(":util"))
+}
