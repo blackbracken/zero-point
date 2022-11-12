@@ -5,6 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import black.bracken.zeropoint.feature.setup.choosesource.ChooseSourceScreenCoordinator
 import black.bracken.zeropoint.featurecommon.navigation.direction.SetupDirection
 
 fun NavGraphBuilder.setupNavigation(navController: NavController) {
@@ -15,7 +16,7 @@ fun NavGraphBuilder.setupNavigation(navController: NavController) {
     composable(
       route = SetupDirection.ChooseSource.destinationId,
     ) {
-      ChooseSourceScreen(
+      ChooseSourceScreenCoordinator(
         viewModel = hiltViewModel(),
       )
     }
