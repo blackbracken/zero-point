@@ -1,6 +1,7 @@
 package black.bracken.zeropoint.feature.setup.choosesource
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,6 +29,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -162,7 +164,16 @@ private fun ChooseSourceContent(
         text = "データの取得先を選択してください"
       )
 
-      Spacer(modifier = Modifier.height(24.dp))
+      Spacer(modifier = Modifier.height(16.dp))
+
+      Box(
+        modifier = Modifier
+          .fillMaxWidth(fraction = 0.4f)
+          .height(1.dp)
+          .background(Color.Gray.copy(alpha = 0.6f))
+      )
+
+      Spacer(modifier = Modifier.height(32.dp))
 
       Column(
         horizontalAlignment = Alignment.CenterHorizontally,
