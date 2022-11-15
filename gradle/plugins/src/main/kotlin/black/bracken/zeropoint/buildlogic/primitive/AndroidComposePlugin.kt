@@ -26,7 +26,7 @@ class AndroidComposePlugin : Plugin<Project> {
         implementation(libs.findLibrary("androidxComposeRuntime"))
         implementation(libs.findLibrary("androidxComposeUi"))
         implementation(libs.findLibrary("androidxComposeUiToolingPreview"))
-        implementation(libs.findLibrary("androidxComposeMaterial"))
+        implementation(libs.findLibrary("androidxComposeMaterial3"))
         implementation(libs.findLibrary("androidxActivityCompose"))
 
         androidTestImplementation(libs.findLibrary("androidxComposeUiTestJunit4"))

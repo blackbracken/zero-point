@@ -14,14 +14,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.material.ModalBottomSheetValue
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
 import androidx.compose.material.rememberModalBottomSheetState
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -106,7 +107,7 @@ fun ChooseSourceScreen(
       Image(
         painter = painterResource(id = ResR.drawable.kayo_lineart),
         contentDescription = null,
-        colorFilter = ColorFilter.tint(color = MaterialTheme.colors.primary),
+        colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.primary),
         modifier = Modifier
           .fillMaxWidth()
           .alpha(0.4f)
@@ -201,6 +202,7 @@ private fun ChooseSourceContent(
   }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun InputPlayerNameModalBottomSheetContent(
   riotId: String,
@@ -213,9 +215,11 @@ private fun InputPlayerNameModalBottomSheetContent(
       .fillMaxWidth()
       .padding(horizontal = 16.dp),
   ) {
-    Spacer(modifier = Modifier.height(8.dp))
+    Spacer(modifier = Modifier.height(16.dp))
+
     Text(
-      text = "Login",
+      text = "LOGIN",
+      style = MaterialTheme.typography.titleLarge,
     )
 
     Spacer(modifier = Modifier.height(8.dp))
@@ -235,6 +239,7 @@ private fun InputPlayerNameModalBottomSheetContent(
 
       Text(
         text = "#",
+        style = MaterialTheme.typography.bodyLarge,
         modifier = Modifier.padding(horizontal = 8.dp)
       )
 
@@ -249,7 +254,7 @@ private fun InputPlayerNameModalBottomSheetContent(
       )
     }
 
-    Spacer(modifier = Modifier.height(8.dp))
+    Spacer(modifier = Modifier.height(16.dp))
 
     Button(
       onClick = {

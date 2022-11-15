@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+import black.bracken.zeropoint.buildlogic.dsl.implementation
+import black.bracken.zeropoint.buildlogic.dsl.libs
+
 plugins {
   id("zeropoint.primitive.androidApplication")
   id("zeropoint.primitive.android.hilt")
@@ -22,4 +25,6 @@ dependencies {
   implementation(project(":data"))
   implementation(project(":featurecommon"))
   implementation(project(":feature:setup"))
+
+  implementation(libs.findLibrary("androidxComposeMaterial"))
 }

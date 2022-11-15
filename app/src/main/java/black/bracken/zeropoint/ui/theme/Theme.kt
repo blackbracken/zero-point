@@ -2,11 +2,14 @@ package black.bracken.zeropoint.ui.theme
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.material.MaterialTheme as M2MaterialTheme
 
 @SuppressLint("ConflictingOnColor")
 private val DarkColorPalette = darkColors(
@@ -24,6 +27,38 @@ private val LightColorPalette = lightColors(
   secondary = ValorantRed,
 )
 
+private val DarkColorScheme = darkColorScheme(
+  primary = ZeroPointColorTokens.ValorantRed,
+  primaryContainer = ValorantRed,
+  secondary = ValorantRed,
+  secondaryContainer = ValorantRed,
+  tertiary = ValorantRed,
+  onPrimary = Color.White,
+  onSecondary = Color.White,
+  onTertiary = Color.White,
+  onBackground = Color.White,
+  onSurface = Color.White,
+  onSurfaceVariant = Color.White,
+  inversePrimary = Color.White,
+)
+
+private val LightColorScheme = lightColorScheme(
+  primary = ZeroPointColorTokens.ValorantRed,
+  primaryContainer = ValorantRed,
+  secondary = ValorantRed,
+  secondaryContainer = ValorantRed,
+  tertiary = ValorantRed,
+  onPrimary = Color.Black,
+  onSecondary = Color.Black,
+  onTertiary = Color.Black,
+  onBackground = Color.Black,
+  surface = Color.Red,
+  surfaceVariant = Color.Red,
+  onSurface = Color.Black,
+  onSurfaceVariant = Color.Black,
+  inversePrimary = Color.Black,
+)
+
 @Composable
 fun ZeroPointTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),
@@ -35,10 +70,26 @@ fun ZeroPointTheme(
     LightColorPalette
   }
 
-  MaterialTheme(
+  val colorScheme = if (darkTheme) {
+    DarkColorScheme
+  } else {
+    LightColorScheme
+  }
+
+  val typography = if (darkTheme) {
+    DarkTypography
+  } else {
+    LightTypography
+  }
+
+  M2MaterialTheme(
     colors = colors,
-    typography = Typography,
-    shapes = Shapes,
-    content = content,
-  )
+    shapes = Shapes
+  ) {
+    MaterialTheme(
+      colorScheme = colorScheme,
+      typography = typography,
+      content = content,
+    )
+  }
 }
