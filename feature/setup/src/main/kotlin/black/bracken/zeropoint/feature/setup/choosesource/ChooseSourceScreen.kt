@@ -1,5 +1,6 @@
 package black.bracken.zeropoint.feature.setup.choosesource
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -61,6 +62,7 @@ fun ChooseSourceScreenCoordinator(
       onChangeRiotId = viewModel::onChangeRiotId,
       onChangeTagline = viewModel::onChangeTagline,
       onConfirmPlayerName = viewModel::onConfirmPlayerName,
+      afterCloseBottomSheet = viewModel::afterCloseBottomSheet,
     ),
   )
 }
@@ -79,7 +81,9 @@ fun ChooseSourceScreen(
   LaunchedEffect(sheetState.targetValue) {
     if (sheetState.targetValue == ModalBottomSheetValue.Hidden) {
       focusManager.clearFocus()
-      uiAction.onCloseBottomSheet()
+
+      // アニメーション中の操作による, ModalBottomSheetの内部状態とUiState内の状態間の齟齬を解消する
+      uiAction.afterCloseBottomSheet()
     }
   }
 
@@ -89,6 +93,12 @@ fun ChooseSourceScreen(
     } else {
       sheetState.hide()
     }
+  }
+
+  BackHandler(
+    enabled = uiState.opensInputPlayerNameModalBottomSheet,
+  ) {
+    uiAction.onCloseBottomSheet()
   }
 
   ModalBottomSheetLayout(

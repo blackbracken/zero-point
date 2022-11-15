@@ -25,6 +25,7 @@ data class ChooseSourceUiAction(
   val onChangeRiotId: (String) -> Unit,
   val onChangeTagline: (String) -> Unit,
   val onConfirmPlayerName: () -> Unit,
+  val afterCloseBottomSheet: () -> Unit,
 )
 
 class ChooseSourceViewModel : ViewModel() {
@@ -64,6 +65,14 @@ class ChooseSourceViewModel : ViewModel() {
   fun onCloseBottomSheet() {
     _uiState.emitRenewedIn(viewModelScope) { uiState ->
       uiState.copy(opensInputPlayerNameModalBottomSheet = false)
+    }
+  }
+
+  fun afterCloseBottomSheet() {
+    if (uiState.value.opensInputPlayerNameModalBottomSheet) {
+      _uiState.emitRenewedIn(viewModelScope) { uiState ->
+        uiState.copy(opensInputPlayerNameModalBottomSheet = false)
+      }
     }
   }
 
