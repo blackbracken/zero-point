@@ -11,7 +11,10 @@ import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
@@ -99,7 +102,9 @@ fun ChooseSourceScreen(
       )
     },
     sheetShape = RoundedCornerShape(4.dp),
-    modifier = Modifier.fillMaxSize(),
+    modifier = Modifier
+      .fillMaxSize()
+      .systemBarsPadding(),
   ) {
     Box(
       modifier = Modifier.fillMaxSize(),
@@ -132,7 +137,7 @@ private fun ChooseSourceContent(
     horizontalAlignment = Alignment.CenterHorizontally,
     modifier = Modifier
       .fillMaxSize()
-      .padding(horizontal = 32.dp)
+      .padding(horizontal = 32.dp),
   ) {
     Column(
       horizontalAlignment = Alignment.CenterHorizontally,
@@ -212,10 +217,12 @@ private fun InputPlayerNameModalBottomSheetContent(
 ) {
   Column(
     modifier = Modifier
+      .navigationBarsPadding()
+      .imePadding()
       .fillMaxWidth()
       .padding(horizontal = 16.dp),
   ) {
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = Modifier.height(8.dp))
 
     Text(
       text = "LOGIN",

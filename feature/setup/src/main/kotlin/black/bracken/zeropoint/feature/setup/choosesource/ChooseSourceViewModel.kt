@@ -1,7 +1,5 @@
 package black.bracken.zeropoint.feature.setup.choosesource
 
-import androidx.compose.ui.text.intl.LocaleList
-import androidx.compose.ui.text.toUpperCase
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import black.bracken.zeropoint.util.extension.emitRenewedIn
@@ -43,7 +41,7 @@ class ChooseSourceViewModel : ViewModel() {
   fun onChangeTagline(tagline: String) {
     _uiState.emitRenewedIn(viewModelScope) { uiState ->
       uiState.copy(
-        tagline = tagline.toUpperCase(LocaleList.current)
+        tagline = tagline
       )
     }
   }
