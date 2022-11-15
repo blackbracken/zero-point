@@ -24,6 +24,7 @@ rootProject.name = "ZeroPoint"
 
 include(
   ":app",
+  ":data",
   ":gradle:plugins",
   ":testing",
   ":featurecommon",
