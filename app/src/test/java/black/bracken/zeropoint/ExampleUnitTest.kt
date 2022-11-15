@@ -1,6 +1,8 @@
 package black.bracken.zeropoint
 
+import black.bracken.zeropoint.data.valorantapi.infra.RemoteValorantApiRepository
 import io.kotest.matchers.shouldBe
+import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 
 /**
@@ -12,5 +14,10 @@ class ExampleUnitTest {
   @Test
   fun addition_isCorrect() {
     (2 + 2).shouldBe(4)
+
+    // TODO remove
+    runBlocking {
+      println(RemoteValorantApiRepository().getAccount("deadbeef", "glhf"))
+    }
   }
 }

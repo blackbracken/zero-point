@@ -3,15 +3,19 @@ android = "8.0.0-alpha08"
 androidxCore = "1.9.0"
 kotlin = "1.6.21"
 kotlinxCoroutines = "1.6.4"
+kotlinxSerialization = "1.4.1"
+kotlinxDatetime = "0.4.0"
 androidxLifecycle = "2.5.1"
 androidxActivity = "1.3.1"
 androidxCompose = "1.2.0-beta01"
 androidxComposeCompiler = "1.2.0-rc02"
+androidxComposeMaterial3 = "1.1.0-alpha01"
 androidxTestExt = "1.1.3"
 androidxTestEspresso = "3.4.0"
 androidxNavigation = "2.5.2"
 hilt = "2.44"
 hiltNavigationCompose = "1.0.0"
+ktor = "2.1.3"
 junit = "4.13.2"
 ktlintGradle = "11.0.0"
 detekt = "1.22.0-RC1"
@@ -21,6 +25,10 @@ kotest = "5.4.2"
 androidGradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android" }
 hiltGradlePlugin = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "hilt" }
 kotlinGradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinSerializationGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+
+kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 
 kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinxCoroutinesTest = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
@@ -38,6 +46,7 @@ androidxComposeRuntime = { module = "androidx.compose.runtime:runtime", version.
 androidxComposeUi = { module = "androidx.compose.ui:ui", version.ref = "androidxCompose" }
 androidxComposeUiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "androidxCompose" }
 androidxComposeMaterial = { module = "androidx.compose.material:material", version.ref = "androidxCompose" }
+androidxComposeMaterial3 = { module = "androidx.compose.material3:material3", version.ref = "androidxComposeMaterial3" }
 
 androidxNavigationUi = { module = "androidx.navigation:navigation-ui", version.ref = "androidxNavigation" }
 androidxNavigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidxNavigation" }
@@ -46,6 +55,9 @@ androidxNavigationCompose = { module = "androidx.navigation:navigation-compose",
 hiltAndroidCompiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 hiltAndroid = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hiltNavigationCompose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+
+ktorClientCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktorClientOkhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 
 junit = { module = "junit:junit", version.ref = "junit" }
 androidxTestExtJunit = { module = "androidx.test.ext:junit", version.ref = "androidxTestExt" }

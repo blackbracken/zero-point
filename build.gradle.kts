@@ -8,6 +8,8 @@ plugins {
 
 buildscript {
   dependencies {
+    classpath(libs.kotlinGradlePlugin)
+    classpath(libs.kotlinSerializationGradlePlugin)
     classpath(libs.hiltGradlePlugin)
     classpath(libs.detektGradlePlugin)
   }
