@@ -37,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -79,6 +80,7 @@ fun ChooseSourceScreen(
   uiAction: ChooseSourceUiAction,
 ) {
   val keyboardController = LocalSoftwareKeyboardController.current
+  val focusManager = LocalFocusManager.current
   val sheetState = rememberModalBottomSheetState(
     initialValue = ModalBottomSheetValue.Hidden
   )
@@ -94,6 +96,7 @@ fun ChooseSourceScreen(
   LaunchedEffect(sheetState.targetValue) {
     if (sheetState.targetValue == ModalBottomSheetValue.Hidden) {
       keyboardController?.hide()
+      focusManager.clearFocus()
 
       // アニメーション中の操作による, ModalBottomSheetの内部状態とUiState内の状態間の齟齬を解消する
       uiAction.afterCloseBottomSheet()
@@ -116,7 +119,10 @@ fun ChooseSourceScreen(
         onChangeTagline = uiAction.onChangeTagline,
       )
     },
-    sheetShape = RoundedCornerShape(4.dp),
+    sheetShape = RoundedCornerShape(
+      topStart = 4.dp,
+      topEnd = 4.dp,
+    ),
     modifier = Modifier
       .fillMaxSize()
       .systemBarsPadding(),

@@ -8,13 +8,17 @@ import kotlinx.coroutines.delay
 import java.util.concurrent.CancellationException
 
 // IMEが閉じている最中に ModalBottomSheetState.hide() を呼び出すと, 実行がキャンセルされ確実に閉じない場合がある
-suspend fun ModalBottomSheetState.forceHide() = forceHideRecursively(5)
+suspend fun ModalBottomSheetState.forceHide(): Boolean = forceHide(retry = 3)
 
-private suspend fun ModalBottomSheetState.forceHideRecursively(count: Int) {
+private suspend fun ModalBottomSheetState.forceHide(retry: Int): Boolean =
   try {
-    if (count > 0) hide()
+    val shouldTryToHide = retry > 0
+    if (shouldTryToHide) {
+      hide()
+    }
+
+    shouldTryToHide
   } catch (_: CancellationException) {
-    delay(1000 / 60)
-    forceHideRecursively(count - 1)
+    delay(4 * 1000 / 60)
+    forceHide(retry - 1)
   }
-}
