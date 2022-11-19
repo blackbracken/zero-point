@@ -28,7 +28,7 @@ private val LightColorPalette = lightColors(
 )
 
 private val DarkColorScheme = darkColorScheme(
-  primary = ZeroColorTokens.valorantRed,
+  primary = ValorantRed,
   primaryContainer = ValorantRed,
   secondary = ValorantRed,
   secondaryContainer = ValorantRed,
@@ -41,7 +41,7 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-  primary = ZeroColorTokens.valorantRed,
+  primary = ValorantRed,
   primaryContainer = ValorantRed,
   secondary = ValorantRed,
   secondaryContainer = ValorantRed,

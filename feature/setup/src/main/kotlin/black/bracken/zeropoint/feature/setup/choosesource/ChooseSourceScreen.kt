@@ -35,7 +35,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -48,6 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import black.bracken.zeropoint.featurecommon.composable.AutoResizeText
 import black.bracken.zeropoint.featurecommon.ext.forceHide
+import black.bracken.zeropoint.featurecommon.theme.ZeroColorTokens
 import black.bracken.zeropoint.resource.R as ResR
 
 @Composable
@@ -197,7 +197,7 @@ private fun ChooseSourceContent(
         modifier = Modifier
           .fillMaxWidth(fraction = 0.4f)
           .height(1.dp)
-          .background(Color.Gray.copy(alpha = 0.6f))
+          .background(ZeroColorTokens.objectMediumEmphasis)
       )
 
       Spacer(modifier = Modifier.height(32.dp))
@@ -258,7 +258,7 @@ private fun InputPlayerNameModalBottomSheetContent(
       OutlinedTextField(
         value = riotId,
         label = {
-          Text("Riot Id")
+          Text("Riot ID", color = ZeroColorTokens.objectMediumEmphasis)
         },
         singleLine = true,
         onValueChange = onChangeRiotId,
@@ -274,7 +274,7 @@ private fun InputPlayerNameModalBottomSheetContent(
       OutlinedTextField(
         value = tagline,
         label = {
-          Text("Tagline")
+          Text("Tagline", color = ZeroColorTokens.objectMediumEmphasis)
         },
         singleLine = true,
         onValueChange = onChangeTagline,
