@@ -9,6 +9,7 @@ plugins {
 android.namespace = "black.bracken.zeropoint.featurecommon"
 
 dependencies {
+  api(project(":resource"))
   api(project(":util"))
 
   implementation(libs.findLibrary("androidxComposeMaterial"))

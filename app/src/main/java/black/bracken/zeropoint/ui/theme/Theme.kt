@@ -28,7 +28,7 @@ private val LightColorPalette = lightColors(
 )
 
 private val DarkColorScheme = darkColorScheme(
-  primary = ZeroPointColorTokens.ValorantRed,
+  primary = ValorantRed,
   primaryContainer = ValorantRed,
   secondary = ValorantRed,
   secondaryContainer = ValorantRed,
@@ -37,13 +37,11 @@ private val DarkColorScheme = darkColorScheme(
   onSecondary = Color.White,
   onTertiary = Color.White,
   onBackground = Color.White,
-  onSurface = Color.White,
-  onSurfaceVariant = Color.White,
   inversePrimary = Color.White,
 )
 
 private val LightColorScheme = lightColorScheme(
-  primary = ZeroPointColorTokens.ValorantRed,
+  primary = ValorantRed,
   primaryContainer = ValorantRed,
   secondary = ValorantRed,
   secondaryContainer = ValorantRed,
@@ -54,8 +52,6 @@ private val LightColorScheme = lightColorScheme(
   onBackground = Color.Black,
   surface = Color.Red,
   surfaceVariant = Color.Red,
-  onSurface = Color.Black,
-  onSurfaceVariant = Color.Black,
   inversePrimary = Color.Black,
 )
 

@@ -31,11 +31,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -47,7 +47,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import black.bracken.zeropoint.featurecommon.composable.AutoResizeText
+import black.bracken.zeropoint.featurecommon.composable.LoadIndicatorCover
 import black.bracken.zeropoint.featurecommon.ext.forceHide
+import black.bracken.zeropoint.featurecommon.theme.ZeroColorTokens
 import black.bracken.zeropoint.resource.R as ResR
 
 @Composable
@@ -81,12 +83,16 @@ fun ChooseSourceScreen(
 ) {
   val keyboardController = LocalSoftwareKeyboardController.current
   val focusManager = LocalFocusManager.current
+
+  // ModalBottomSheetState を再生成せずに [uiState.isLoadingOnModal] を取得する
+  val shouldCloseModalOnTapOutside by rememberUpdatedState(!uiState.isLoadingOnModal)
   val sheetState = rememberModalBottomSheetState(
-    initialValue = ModalBottomSheetValue.Hidden
+    initialValue = ModalBottomSheetValue.Hidden,
+    confirmStateChange = { shouldCloseModalOnTapOutside }
   )
 
-  LaunchedEffect(uiState.opensInputPlayerNameModalBottomSheet) {
-    if (uiState.opensInputPlayerNameModalBottomSheet) {
+  LaunchedEffect(uiState.shouldOpenInputPlayerNameModal) {
+    if (uiState.shouldOpenInputPlayerNameModal) {
       sheetState.show()
     } else {
       sheetState.forceHide()
@@ -104,7 +110,7 @@ fun ChooseSourceScreen(
   }
 
   BackHandler(
-    enabled = uiState.opensInputPlayerNameModalBottomSheet,
+    enabled = uiState.shouldOpenInputPlayerNameModal,
   ) {
     uiAction.onCloseBottomSheet()
   }
@@ -112,12 +118,16 @@ fun ChooseSourceScreen(
   ModalBottomSheetLayout(
     sheetState = sheetState,
     sheetContent = {
-      InputPlayerNameModalBottomSheetContent(
-        riotId = uiState.riotId,
-        tagline = uiState.tagline,
-        onChangeRiotId = uiAction.onChangeRiotId,
-        onChangeTagline = uiAction.onChangeTagline,
-      )
+      LoadIndicatorCover(isLoading = uiState.isLoadingOnModal) {
+        InputPlayerNameModalBottomSheetContent(
+          riotId = uiState.riotId,
+          tagline = uiState.tagline,
+          isLoadingOnModal = uiState.isLoadingOnModal,
+          onChangeRiotId = uiAction.onChangeRiotId,
+          onChangeTagline = uiAction.onChangeTagline,
+          onConfirmPlayerName = uiAction.onConfirmPlayerName,
+        )
+      }
     },
     sheetShape = RoundedCornerShape(
       topStart = 4.dp,
@@ -127,20 +137,11 @@ fun ChooseSourceScreen(
       .fillMaxSize()
       .systemBarsPadding(),
   ) {
-    Box(
+    ChooseSourceBackground(
       modifier = Modifier.fillMaxSize(),
     ) {
-      Image(
-        painter = painterResource(id = ResR.drawable.kayo_lineart),
-        contentDescription = null,
-        colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.primary),
-        modifier = Modifier
-          .fillMaxWidth()
-          .alpha(0.4f)
-          .align(Alignment.BottomEnd)
-          .absoluteOffset(x = 96.dp)
-      )
       ChooseSourceContent(
+        isLoadingOnModal = uiState.isLoadingOnModal,
         onChooseRemoteSource = uiAction.onChooseRemoteSource,
         onChooseFakeSource = uiAction.onChooseFakeSource,
       )
@@ -149,7 +150,31 @@ fun ChooseSourceScreen(
 }
 
 @Composable
+private fun ChooseSourceBackground(
+  modifier: Modifier = Modifier,
+  content: @Composable () -> Unit,
+) {
+  Box(
+    modifier = modifier,
+  ) {
+    Image(
+      painter = painterResource(id = ResR.drawable.kayo_lineart),
+      contentDescription = null,
+      colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.primary),
+      modifier = Modifier
+        .fillMaxWidth()
+        .alpha(0.4f)
+        .align(Alignment.BottomEnd)
+        .absoluteOffset(x = 96.dp)
+    )
+
+    content()
+  }
+}
+
+@Composable
 private fun ChooseSourceContent(
+  isLoadingOnModal: Boolean,
   onChooseRemoteSource: () -> Unit,
   onChooseFakeSource: () -> Unit,
 ) {
@@ -197,7 +222,7 @@ private fun ChooseSourceContent(
         modifier = Modifier
           .fillMaxWidth(fraction = 0.4f)
           .height(1.dp)
-          .background(Color.Gray.copy(alpha = 0.6f))
+          .background(ZeroColorTokens.objectMediumEmphasis)
       )
 
       Spacer(modifier = Modifier.height(32.dp))
@@ -208,6 +233,7 @@ private fun ChooseSourceContent(
       ) {
         Button(
           onClick = onChooseRemoteSource,
+          enabled = !isLoadingOnModal,
           modifier = Modifier.fillMaxWidth(),
         ) {
           Text(text = "リモートデータ")
@@ -217,6 +243,7 @@ private fun ChooseSourceContent(
 
         Button(
           onClick = onChooseFakeSource,
+          enabled = !isLoadingOnModal,
           modifier = Modifier.fillMaxWidth(),
         ) {
           Text(text = "フェイクデータ")
@@ -233,8 +260,10 @@ private fun ChooseSourceContent(
 private fun InputPlayerNameModalBottomSheetContent(
   riotId: String,
   tagline: String,
+  isLoadingOnModal: Boolean,
   onChangeRiotId: (String) -> Unit,
   onChangeTagline: (String) -> Unit,
+  onConfirmPlayerName: () -> Unit,
 ) {
   Column(
     modifier = Modifier
@@ -257,8 +286,9 @@ private fun InputPlayerNameModalBottomSheetContent(
     ) {
       OutlinedTextField(
         value = riotId,
+        enabled = !isLoadingOnModal,
         label = {
-          Text("Riot Id")
+          Text("Riot ID", color = ZeroColorTokens.objectMediumEmphasis)
         },
         singleLine = true,
         onValueChange = onChangeRiotId,
@@ -273,8 +303,9 @@ private fun InputPlayerNameModalBottomSheetContent(
 
       OutlinedTextField(
         value = tagline,
+        enabled = !isLoadingOnModal,
         label = {
-          Text("Tagline")
+          Text("Tagline", color = ZeroColorTokens.objectMediumEmphasis)
         },
         singleLine = true,
         onValueChange = onChangeTagline,
@@ -285,9 +316,8 @@ private fun InputPlayerNameModalBottomSheetContent(
     Spacer(modifier = Modifier.height(16.dp))
 
     Button(
-      onClick = {
-
-      },
+      onClick = onConfirmPlayerName,
+      enabled = !isLoadingOnModal,
       modifier = Modifier.align(Alignment.End),
     ) {
       Text(text = "Enter")
