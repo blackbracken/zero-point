@@ -10,6 +10,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
@@ -39,13 +40,15 @@ fun LoadIndicatorCover(
       enter = fadeIn(),
       exit = fadeOut(),
     ) {
-      LoadingIndicator()
+      LoadIndicator()
     }
   }
 }
 
+private val LoadIndicatorSize = 88.dp
+
 @Composable
-private fun LoadingIndicator() {
+private fun LoadIndicator() {
   val alpha = rememberInfiniteTransition()
     .animateFloat(
       initialValue = 0.3f,
@@ -63,13 +66,25 @@ private fun LoadingIndicator() {
     contentDescription = null,
     colorFilter = ColorFilter.tint(ZeroColorTokens.objectMediumEmphasis),
     modifier = Modifier
-      .size(96.dp)
+      .size(LoadIndicatorSize)
+      .offset(
+        x = 1.dp,
+        y = 1.dp,
+      ),
+  )
+
+  Image(
+    painter = painterResource(id = ResR.drawable.load_indicator),
+    contentDescription = null,
+    colorFilter = ColorFilter.tint(ZeroColorTokens.valorantRed),
+    modifier = Modifier
+      .size(LoadIndicatorSize)
       .alpha(alpha.value),
   )
 }
 
 @Preview
 @Composable
-private fun PreviewLoadingAnimation() {
-  LoadingIndicator()
+private fun PreviewLoadAnimation() {
+  LoadIndicator()
 }
