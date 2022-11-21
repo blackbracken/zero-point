@@ -1,6 +1,6 @@
-package black.bracken.zeropoint.data.valorantapi
+package black.bracken.zeropoint.data.kernel.repository
 
-import black.bracken.zeropoint.data.model.Account
+import black.bracken.zeropoint.data.kernel.domain.Account
 
 interface ValorantApiRepository {
 

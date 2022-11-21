@@ -1,8 +1,8 @@
-package black.bracken.zeropoint.data.valorantapi.infra.response
+package black.bracken.zeropoint.data.infra.repository.valorantapi.response
 
-import black.bracken.zeropoint.data.model.Account
-import black.bracken.zeropoint.data.model.PlayerId
-import black.bracken.zeropoint.data.model.Region
+import black.bracken.zeropoint.data.kernel.domain.Account
+import black.bracken.zeropoint.data.kernel.domain.PlayerId
+import black.bracken.zeropoint.data.kernel.domain.Region
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -18,6 +18,16 @@ data class AccountResponse(
   val card: Card,
 )
 
+@Serializable
+data class Card(
+  @SerialName(value = "small")
+  val smallUrl: String,
+  @SerialName(value = "large")
+  val largeUrl: String,
+  @SerialName(value = "wide")
+  val wideUrl: String,
+)
+
 internal fun AccountResponse.mapToAccount(): Account = Account(
   playerId = PlayerId(playerId),
   accountLevel = accountLevel,
@@ -27,14 +37,4 @@ internal fun AccountResponse.mapToAccount(): Account = Account(
   cardSmallUrl = card.smallUrl,
   cardLargeUrl = card.largeUrl,
   cardWideUrl = card.wideUrl,
-)
-
-@Serializable
-data class Card(
-  @SerialName(value = "small")
-  val smallUrl: String,
-  @SerialName(value = "large")
-  val largeUrl: String,
-  @SerialName(value = "wide")
-  val wideUrl: String,
 )

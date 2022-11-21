@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.data.model.error
+package black.bracken.zeropoint.data.kernel.domain.error
 
 sealed class ValorantApiException(
   override val message: String? = null
@@ -17,7 +17,7 @@ sealed class ValorantApiException(
 
 }
 
-internal fun ValorantApiException.Companion.fromStatusCode(code: Int): ValorantApiException =
+fun ValorantApiException.Companion.fromStatusCode(code: Int): ValorantApiException =
   when (code) {
     400 -> ValorantApiException.BadRequest
     403 -> ValorantApiException.Forbidden

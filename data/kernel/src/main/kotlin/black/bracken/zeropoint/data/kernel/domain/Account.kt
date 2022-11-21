@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.data.model
+package black.bracken.zeropoint.data.kernel.domain
 
 data class Account(
   val playerId: PlayerId,

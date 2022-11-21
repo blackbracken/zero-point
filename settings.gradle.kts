@@ -24,7 +24,8 @@ rootProject.name = "ZeroPoint"
 
 include(
   ":app",
-  ":data",
+  ":data:infra",
+  ":data:kernel",
   ":gradle:plugins",
   ":uishare",
   ":feature:setup",

@@ -9,7 +9,4 @@ dependencies {
 
   implementation(libs.kotlinxSerializationJson)
   implementation(libs.kotlinxDatetime)
-
-  implementation(libs.ktorClientCore)
-  implementation(libs.ktorClientOkhttp)
 }
