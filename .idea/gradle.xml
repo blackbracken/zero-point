@@ -29,7 +29,6 @@
             <option value="$PROJECT_DIR$/gradle" />
             <option value="$PROJECT_DIR$/gradle/plugins" />
             <option value="$PROJECT_DIR$/resource" />
-            <option value="$PROJECT_DIR$/testing" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>
