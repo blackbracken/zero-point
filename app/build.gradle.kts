@@ -23,7 +23,7 @@ android.namespace = "black.bracken.zeropoint.app"
 
 dependencies {
   implementation(project(":data"))
-  implementation(project(":featurecommon"))
+  implementation(project(":uishare"))
   implementation(project(":feature:setup"))
 
   implementation(libs.findLibrary("androidxComposeMaterial"))

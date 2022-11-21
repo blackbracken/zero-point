@@ -6,7 +6,7 @@ plugins {
   id("zeropoint.primitive.android.compose")
 }
 
-android.namespace = "black.bracken.zeropoint.featurecommon"
+android.namespace = "black.bracken.zeropoint.uishare"
 
 dependencies {
   api(project(":resource"))

@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterialApi::class)
 
-package black.bracken.zeropoint.featurecommon.ext
+package black.bracken.zeropoint.uishare.ext
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetState

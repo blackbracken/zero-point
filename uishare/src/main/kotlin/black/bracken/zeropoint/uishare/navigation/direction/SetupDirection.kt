@@ -1,8 +1,8 @@
-package black.bracken.zeropoint.featurecommon.navigation.direction
+package black.bracken.zeropoint.uishare.navigation.direction
 
-import black.bracken.zeropoint.featurecommon.navigation.Navigator
-import black.bracken.zeropoint.featurecommon.navigation.NoArgs
-import black.bracken.zeropoint.featurecommon.navigation.NoArgsNavigator
+import black.bracken.zeropoint.uishare.navigation.Navigator
+import black.bracken.zeropoint.uishare.navigation.NoArgs
+import black.bracken.zeropoint.uishare.navigation.NoArgsNavigator
 
 sealed interface SetupDirection {
 

@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.featurecommon.composable
+package black.bracken.zeropoint.uishare.composable
 
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text

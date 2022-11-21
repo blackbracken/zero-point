@@ -26,7 +26,7 @@ include(
   ":app",
   ":data",
   ":gradle:plugins",
-  ":featurecommon",
+  ":uishare",
   ":feature:setup",
   ":resource",
   ":util",

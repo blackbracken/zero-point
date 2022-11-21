@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="11">
+      <module name="ZeroPoint.featurecommon" target="17" />
       <module name="ZeroPoint.testing" target="17" />
       <module name="ZeroPoint.testing.main" target="17" />
       <module name="ZeroPoint.testing.test" target="17" />

@@ -6,7 +6,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import black.bracken.zeropoint.feature.setup.choosesource.ChooseSourceScreenCoordinator
-import black.bracken.zeropoint.featurecommon.navigation.direction.SetupDirection
+import black.bracken.zeropoint.uishare.navigation.direction.SetupDirection
 
 fun NavGraphBuilder.setupNavigation(navController: NavController) {
   navigation(

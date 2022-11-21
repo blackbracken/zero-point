@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.featurecommon.composable
+package black.bracken.zeropoint.uishare.composable
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -22,7 +22,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import black.bracken.zeropoint.featurecommon.theme.ZeroColorTokens
+import black.bracken.zeropoint.uishare.theme.ZeroColorTokens
 import black.bracken.zeropoint.resource.R as ResR
 
 @Composable

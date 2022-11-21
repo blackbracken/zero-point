@@ -25,10 +25,10 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/setup" />
-            <option value="$PROJECT_DIR$/featurecommon" />
             <option value="$PROJECT_DIR$/gradle" />
             <option value="$PROJECT_DIR$/gradle/plugins" />
             <option value="$PROJECT_DIR$/resource" />
+            <option value="$PROJECT_DIR$/uishare" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>

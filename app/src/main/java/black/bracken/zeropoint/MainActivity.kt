@@ -9,8 +9,8 @@ import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import black.bracken.zeropoint.feature.setup.setupNavigation
-import black.bracken.zeropoint.featurecommon.navigation.direction.SetupDirection
 import black.bracken.zeropoint.ui.theme.ZeroPointTheme
+import black.bracken.zeropoint.uishare.navigation.direction.SetupDirection
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

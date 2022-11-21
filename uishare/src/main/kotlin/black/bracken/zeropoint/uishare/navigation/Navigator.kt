@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.featurecommon.navigation
+package black.bracken.zeropoint.uishare.navigation
 
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavController

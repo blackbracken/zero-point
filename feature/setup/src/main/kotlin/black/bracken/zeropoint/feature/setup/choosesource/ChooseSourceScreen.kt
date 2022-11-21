@@ -46,10 +46,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import black.bracken.zeropoint.featurecommon.composable.AutoResizeText
-import black.bracken.zeropoint.featurecommon.composable.LoadIndicatorCover
-import black.bracken.zeropoint.featurecommon.ext.forceHide
-import black.bracken.zeropoint.featurecommon.theme.ZeroColorTokens
+import black.bracken.zeropoint.uishare.composable.AutoResizeText
+import black.bracken.zeropoint.uishare.composable.LoadIndicatorCover
+import black.bracken.zeropoint.uishare.ext.forceHide
+import black.bracken.zeropoint.uishare.theme.ZeroColorTokens
 import black.bracken.zeropoint.resource.R as ResR
 
 @Composable

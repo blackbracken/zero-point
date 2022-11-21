@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.featurecommon.theme
+package black.bracken.zeropoint.uishare.theme
 
 import androidx.compose.ui.graphics.Color
 
