@@ -2,7 +2,7 @@ package black.bracken.zeropoint.feature.setup.choosesource
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import black.bracken.zeropoint.util.extension.emitRenewedIn
+import black.bracken.zeropoint.util.ext.emitRenewedIn
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -1,6 +1,6 @@
-package black.bracken.zeropoint.data.infra.repository.valorantapi
+package black.bracken.zeropoint.data.infra.repo.valorantapi
 
-import black.bracken.zeropoint.data.infra.repository.valorantapi.response.AccountResponse
+import black.bracken.zeropoint.data.infra.repo.valorantapi.response.AccountResponse
 import black.bracken.zeropoint.data.kernel.domain.error.ValorantApiException
 import black.bracken.zeropoint.data.kernel.domain.error.fromStatusCode
 import io.ktor.client.HttpClient

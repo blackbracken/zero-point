@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.data.infra.repository.valorantapi.response
+package black.bracken.zeropoint.data.infra.repo.valorantapi.response
 
 import black.bracken.zeropoint.data.kernel.domain.Account
 import black.bracken.zeropoint.data.kernel.domain.PlayerId

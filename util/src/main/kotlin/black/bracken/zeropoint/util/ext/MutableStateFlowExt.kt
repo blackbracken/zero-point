@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.util.extension
+package black.bracken.zeropoint.util.ext
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow

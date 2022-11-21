@@ -1,8 +1,8 @@
-package black.bracken.zeropoint.data.infra.repository.valorantapi
+package black.bracken.zeropoint.data.infra.repo.valorantapi
 
-import black.bracken.zeropoint.data.infra.repository.valorantapi.response.mapToAccount
+import black.bracken.zeropoint.data.infra.repo.valorantapi.response.mapToAccount
 import black.bracken.zeropoint.data.kernel.domain.Account
-import black.bracken.zeropoint.data.kernel.repository.ValorantApiRepository
+import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import kotlinx.serialization.SerializationException
 
 class RemoteValorantApiRepository(

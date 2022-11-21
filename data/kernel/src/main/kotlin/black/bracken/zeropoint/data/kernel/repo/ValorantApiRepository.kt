@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.data.kernel.repository
+package black.bracken.zeropoint.data.kernel.repo
 
 import black.bracken.zeropoint.data.kernel.domain.Account
 
