@@ -9,6 +9,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
@@ -64,7 +65,9 @@ private fun LoadIndicator() {
   Image(
     painter = painterResource(id = ResR.drawable.load_indicator),
     contentDescription = null,
-    colorFilter = ColorFilter.tint(ZeroColorTokens.objectMediumEmphasis),
+    colorFilter = ColorFilter.tint(
+      if (isSystemInDarkTheme()) ZeroColorTokens.objectMediumEmphasis else ZeroColorTokens.objectLowEmphasis
+    ),
     modifier = Modifier
       .size(LoadIndicatorSize)
       .offset(
