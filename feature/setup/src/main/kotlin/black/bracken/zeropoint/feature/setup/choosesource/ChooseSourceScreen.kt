@@ -327,14 +327,13 @@ private fun InputPlayerNameModalBottomSheetContent(
         color = MaterialTheme.colorScheme.error,
         modifier = Modifier.padding(start = 8.dp)
       )
-
     }
 
     Spacer(modifier = Modifier.height(16.dp))
 
     Button(
       onClick = onConfirmPlayerName,
-      enabled = !isLoadingOnModal,
+      enabled = riotId.isNotEmpty() && tagline.isNotEmpty() && !isLoadingOnModal,
       modifier = Modifier.align(Alignment.End),
     ) {
       Text(text = "Enter")
