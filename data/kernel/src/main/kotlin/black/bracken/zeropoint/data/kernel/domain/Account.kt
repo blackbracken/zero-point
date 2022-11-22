@@ -9,4 +9,17 @@ data class Account(
   val cardSmallUrl: String,
   val cardLargeUrl: String,
   val cardWideUrl: String,
+) {
+  companion object
+}
+
+fun Account.Companion.fake(): Account = Account(
+  playerId = PlayerId.fake(),
+  accountLevel = 123,
+  region = Region.AP,
+  name = "MrGhost",
+  tag = "DUMMY",
+  cardSmallUrl = "https://images.dog.ceo/breeds/shiba/shiba-12.jpg",
+  cardLargeUrl = "https://images.dog.ceo/breeds/shiba/shiba-12.jpg",
+  cardWideUrl = "https://images.dog.ceo/breeds/shiba/shiba-12.jpg"
 )

@@ -16,32 +16,6 @@ import kotlinx.serialization.SerializationException
 import javax.inject.Inject
 import black.bracken.zeropoint.resource.R as ResR
 
-data class ChooseSourceUiState(
-  val shouldOpenInputPlayerNameModal: Boolean = false,
-  val isLoadingOnModal: Boolean = false,
-  val errorTextOnModal: StringResource? = null,
-  val riotId: String = "",
-  val tagline: String = "",
-) {
-  companion object {
-    val Initial = ChooseSourceUiState(
-      shouldOpenInputPlayerNameModal = false,
-      errorTextOnModal = null,
-      isLoadingOnModal = false,
-    )
-  }
-}
-
-data class ChooseSourceUiAction(
-  val onChooseRemoteSource: () -> Unit,
-  val onChooseFakeSource: () -> Unit,
-  val onCloseBottomSheet: () -> Unit,
-  val onChangeRiotId: (String) -> Unit,
-  val onChangeTagline: (String) -> Unit,
-  val onConfirmPlayerName: () -> Unit,
-  val afterCloseBottomSheet: () -> Unit,
-)
-
 @HiltViewModel
 class ChooseSourceViewModel @Inject constructor(
   private val localCacheRepository: LocalCacheRepository,

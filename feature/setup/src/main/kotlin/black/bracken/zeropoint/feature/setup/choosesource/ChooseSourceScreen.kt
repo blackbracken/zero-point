@@ -243,7 +243,10 @@ private fun ChooseSourceContent(
           enabled = !isLoadingOnModal,
           modifier = Modifier.fillMaxWidth(),
         ) {
-          Text(text = stringResource(ResR.string.choose_source_choose_button_remote_label))
+          Text(
+            text = stringResource(ResR.string.choose_source_choose_button_remote_label),
+            maxLines = 1,
+          )
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -253,7 +256,10 @@ private fun ChooseSourceContent(
           enabled = !isLoadingOnModal,
           modifier = Modifier.fillMaxWidth(),
         ) {
-          Text(text = stringResource(ResR.string.choose_source_choose_button_fake_label))
+          Text(
+            text = stringResource(ResR.string.choose_source_choose_button_fake_label),
+            maxLines = 1,
+          )
         }
 
         Spacer(modifier = Modifier.height(96.dp))
@@ -304,7 +310,8 @@ private fun InputPlayerNameModalBottomSheetContent(
         label = {
           Text(
             text = stringResource(ResR.string.choose_source_modal_riot_id_label),
-            color = ZeroColorTokens.objectMediumEmphasis
+            color = ZeroColorTokens.objectMediumEmphasis,
+            maxLines = 1,
           )
         },
         singleLine = true,
@@ -325,8 +332,9 @@ private fun InputPlayerNameModalBottomSheetContent(
         enabled = !isLoadingOnModal,
         label = {
           Text(
-            stringResource(ResR.string.choose_source_modal_tagline_label),
-            color = ZeroColorTokens.objectMediumEmphasis
+            text = stringResource(ResR.string.choose_source_modal_tagline_label),
+            color = ZeroColorTokens.objectMediumEmphasis,
+            maxLines = 1,
           )
         },
         singleLine = true,
@@ -354,7 +362,7 @@ private fun InputPlayerNameModalBottomSheetContent(
       modifier = Modifier.align(Alignment.End),
     ) {
       Text(
-        text = stringResource(ResR.string.choose_source_modal_send_button_label)
+        text = stringResource(ResR.string.choose_source_modal_send_button_label),
       )
     }
 
@@ -365,8 +373,8 @@ private fun InputPlayerNameModalBottomSheetContent(
 @Preview
 @Composable
 private fun PreviewChooseSourceScreen() {
-  // TODO: prepare fake
-//  ChooseSourceScreenCoordinator(
-//    viewModel = ChooseSourceViewModel(),
-//  )
+  ChooseSourceScreen(
+    uiState = ChooseSourceUiState.fake(),
+    uiAction = ChooseSourceUiAction.fake(),
+  )
 }
