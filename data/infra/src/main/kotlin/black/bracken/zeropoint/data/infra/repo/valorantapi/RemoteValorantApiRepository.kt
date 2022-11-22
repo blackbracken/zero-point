@@ -6,7 +6,7 @@ import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import kotlinx.serialization.SerializationException
 
 class RemoteValorantApiRepository(
-  private val unofficialValorantApiDataSource: UnofficialValorantApiDataSource = UnofficialValorantApiDataSource() // TODO: remove default param
+  private val unofficialValorantApiDataSource: UnofficialValorantApiDataSource
 ) : ValorantApiRepository {
 
   /**

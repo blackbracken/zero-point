@@ -3,9 +3,9 @@ package black.bracken.zeropoint.feature.setup.choosesource
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
+import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import black.bracken.zeropoint.util.ext.emitRenewedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -38,6 +38,7 @@ data class ChooseSourceUiAction(
 @HiltViewModel
 class ChooseSourceViewModel @Inject constructor(
   private val localCacheRepository: LocalCacheRepository,
+  private val valorantApiRepository: ValorantApiRepository,
 ) : ViewModel() {
 
   private val _uiState = MutableStateFlow(ChooseSourceUiState.Initial)
@@ -58,18 +59,23 @@ class ChooseSourceViewModel @Inject constructor(
   }
 
   fun onConfirmPlayerName() {
-    val old = uiState.value
-
-    _uiState.emitRenewedIn(viewModelScope) { uiState ->
-      uiState.copy(
-        isLoadingOnModal = true,
-      )
-    }
-
-    // TODO: delete
     viewModelScope.launch {
-      delay(3000L)
-      _uiState.emit(old)
+      val snapshot = uiState.value
+
+      _uiState.emit(snapshot.copy(isLoadingOnModal = true))
+
+      valorantApiRepository.getAccount(
+        snapshot.riotId,
+        snapshot.tagline,
+      )
+        .onSuccess { account ->
+          localCacheRepository.setPlayerId(account.playerId)
+        }
+        .onFailure { throwable ->
+          // TODO: handle error
+        }
+
+      _uiState.emit(snapshot.copy(isLoadingOnModal = false))
     }
   }
 
