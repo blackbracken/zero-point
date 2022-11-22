@@ -16,4 +16,8 @@ object FakeLocalCacheRepository : LocalCacheRepository {
 
   override suspend fun clearPlayerId() = Unit
 
+  override fun shouldUseRemoteDataSource(): Boolean = false
+
+  override suspend fun setShouldUseRemoteDataSource(shouldUseRemoteDataSource: Boolean) = Unit
+
 }

@@ -13,4 +13,8 @@ interface LocalCacheRepository {
 
   suspend fun clearPlayerId()
 
+  fun shouldUseRemoteDataSource(): Boolean
+
+  suspend fun setShouldUseRemoteDataSource(shouldUseRemoteDataSource: Boolean)
+
 }

@@ -8,13 +8,18 @@ import androidx.compose.runtime.Composable
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
 import black.bracken.zeropoint.feature.setup.setupNavigation
 import black.bracken.zeropoint.ui.theme.ZeroPointTheme
 import black.bracken.zeropoint.uishare.navigation.direction.SetupDirection
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+  @Inject
+  lateinit var localCacheRepository: LocalCacheRepository
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
