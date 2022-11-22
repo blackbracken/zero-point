@@ -2,11 +2,14 @@ package black.bracken.zeropoint.feature.setup.choosesource
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
 import black.bracken.zeropoint.util.ext.emitRenewedIn
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 data class ChooseSourceUiState(
   val shouldOpenInputPlayerNameModal: Boolean = false,
@@ -32,7 +35,10 @@ data class ChooseSourceUiAction(
   val afterCloseBottomSheet: () -> Unit,
 )
 
-class ChooseSourceViewModel : ViewModel() {
+@HiltViewModel
+class ChooseSourceViewModel @Inject constructor(
+  private val localCacheRepository: LocalCacheRepository,
+) : ViewModel() {
 
   private val _uiState = MutableStateFlow(ChooseSourceUiState.Initial)
   val uiState get() = _uiState.asStateFlow()

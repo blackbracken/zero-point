@@ -330,7 +330,8 @@ private fun InputPlayerNameModalBottomSheetContent(
 @Preview
 @Composable
 private fun PreviewChooseSourceScreen() {
-  ChooseSourceScreenCoordinator(
-    viewModel = ChooseSourceViewModel(),
-  )
+  // TODO: prepare fake
+//  ChooseSourceScreenCoordinator(
+//    viewModel = ChooseSourceViewModel(),
+//  )
 }
