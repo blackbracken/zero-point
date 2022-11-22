@@ -8,4 +8,11 @@
     <string name="error_too_many_requests">APIリクエストの上限に達しました</string>
     <string name="error_service_unavailable">サーバーが稼働していません</string>
     <string name="error_unknown">不明なエラーが発生しました: %1$s</string>
+
+    <string name="choose_source_choose_button_description">データの取得先を選択してください</string>
+    <string name="choose_source_choose_button_remote_label">リモートデータ</string>
+    <string name="choose_source_choose_button_fake_label">フェイクデータ</string>
+    <string name="choose_source_modal_title">ログイン</string>
+    <string name="choose_source_modal_subtitle">プレイヤー名を入力してください</string>
+    <string name="choose_source_modal_send_button_label">送信</string>
 </resources>

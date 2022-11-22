@@ -8,4 +8,15 @@
     <string name="error_too_many_requests">API request limit reached</string>
     <string name="error_service_unavailable">Server is not running</string>
     <string name="error_unknown">An unknown error has occurred: %1$s</string>
+
+    <string name="choose_source_title" translatable="false">ZERO-POINT</string>
+    <string name="choose_source_subtitle" translatable="false">AN UNOFFICIAL VALORANT STATS VIEWER</string>
+    <string name="choose_source_modal_riot_id_label" translatable="false">Riot ID</string>
+    <string name="choose_source_modal_tagline_label" translatable="false">Tagline</string>
+    <string name="choose_source_choose_button_description">Choose the data source to retrieve your account info</string>
+    <string name="choose_source_choose_button_remote_label">REMOTE</string>
+    <string name="choose_source_choose_button_fake_label">FAKE</string>
+    <string name="choose_source_modal_title">LOGIN</string>
+    <string name="choose_source_modal_subtitle">Type your player name</string>
+    <string name="choose_source_modal_send_button_label">Enter</string>
 </resources>

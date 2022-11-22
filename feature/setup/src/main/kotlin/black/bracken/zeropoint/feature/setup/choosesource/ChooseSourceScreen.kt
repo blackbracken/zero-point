@@ -42,6 +42,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
@@ -195,7 +196,7 @@ private fun ChooseSourceContent(
       Spacer(modifier = Modifier.height(96.dp))
 
       AutoResizeText(
-        text = "ZERO-POINT",
+        text = stringResource(ResR.string.choose_source_title),
         maxFontSize = 96.sp,
         fontFamily = FontFamily(Font(ResR.font.valorant)),
       )
@@ -203,7 +204,7 @@ private fun ChooseSourceContent(
       Spacer(modifier = Modifier.height(8.dp))
 
       AutoResizeText(
-        text = "An unofficial valorant stats viewer",
+        text = stringResource(ResR.string.choose_source_subtitle),
         maxFontSize = 16.sp,
         fontFamily = FontFamily(Font(ResR.font.valorant)),
         textAlign = TextAlign.End,
@@ -217,7 +218,8 @@ private fun ChooseSourceContent(
       horizontalAlignment = Alignment.CenterHorizontally,
     ) {
       Text(
-        text = "データの取得先を選択してください"
+        text = stringResource(ResR.string.choose_source_choose_button_description),
+        textAlign = TextAlign.Center
       )
 
       Spacer(modifier = Modifier.height(16.dp))
@@ -240,7 +242,7 @@ private fun ChooseSourceContent(
           enabled = !isLoadingOnModal,
           modifier = Modifier.fillMaxWidth(),
         ) {
-          Text(text = "リモートデータ")
+          Text(text = stringResource(ResR.string.choose_source_choose_button_remote_label))
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -250,7 +252,7 @@ private fun ChooseSourceContent(
           enabled = !isLoadingOnModal,
           modifier = Modifier.fillMaxWidth(),
         ) {
-          Text(text = "フェイクデータ")
+          Text(text = stringResource(ResR.string.choose_source_choose_button_fake_label))
         }
 
         Spacer(modifier = Modifier.height(96.dp))
@@ -277,14 +279,20 @@ private fun InputPlayerNameModalBottomSheetContent(
       .fillMaxWidth()
       .padding(horizontal = 16.dp),
   ) {
-    Spacer(modifier = Modifier.height(8.dp))
+    Spacer(modifier = Modifier.height(16.dp))
 
     Text(
-      text = "LOGIN",
-      style = MaterialTheme.typography.titleLarge,
+      text = stringResource(ResR.string.choose_source_modal_title),
+      style = MaterialTheme.typography.headlineMedium,
     )
 
     Spacer(modifier = Modifier.height(8.dp))
+    Text(
+      text = stringResource(ResR.string.choose_source_modal_subtitle),
+      style = MaterialTheme.typography.bodyMedium,
+    )
+
+    Spacer(modifier = Modifier.height(24.dp))
 
     Row(
       verticalAlignment = Alignment.CenterVertically,
@@ -293,7 +301,10 @@ private fun InputPlayerNameModalBottomSheetContent(
         value = riotId,
         enabled = !isLoadingOnModal,
         label = {
-          Text("Riot ID", color = ZeroColorTokens.objectMediumEmphasis)
+          Text(
+            text = stringResource(ResR.string.choose_source_modal_riot_id_label),
+            color = ZeroColorTokens.objectMediumEmphasis
+          )
         },
         singleLine = true,
         onValueChange = onChangeRiotId,
@@ -310,7 +321,10 @@ private fun InputPlayerNameModalBottomSheetContent(
         value = tagline,
         enabled = !isLoadingOnModal,
         label = {
-          Text("Tagline", color = ZeroColorTokens.objectMediumEmphasis)
+          Text(
+            stringResource(ResR.string.choose_source_modal_tagline_label),
+            color = ZeroColorTokens.objectMediumEmphasis
+          )
         },
         singleLine = true,
         onValueChange = onChangeTagline,
@@ -336,7 +350,9 @@ private fun InputPlayerNameModalBottomSheetContent(
       enabled = riotId.isNotEmpty() && tagline.isNotEmpty() && !isLoadingOnModal,
       modifier = Modifier.align(Alignment.End),
     ) {
-      Text(text = "Enter")
+      Text(
+        text = stringResource(ResR.string.choose_source_modal_send_button_label)
+      )
     }
 
     Spacer(modifier = Modifier.height(16.dp))
