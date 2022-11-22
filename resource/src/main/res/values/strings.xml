@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_serialization">Failed to serialize</string>
+    <string name="error_bad_request">An invalid request was sent</string>
+    <string name="error_forbidden">Requested for inaccessible location</string>
+    <string name="error_player_not_found">No corresponding player found</string>
+    <string name="error_timeout">Connection timed out</string>
+    <string name="error_too_many_requests">API request limit reached</string>
+    <string name="error_service_unavailable">Server is not running</string>
+    <string name="error_unknown">An unknown error has occurred: %1$s</string>
+</resources>

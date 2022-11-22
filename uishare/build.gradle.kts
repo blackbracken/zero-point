@@ -9,6 +9,7 @@ plugins {
 android.namespace = "black.bracken.zeropoint.uishare"
 
 dependencies {
+  api(project(":data:kernel"))
   api(project(":resource"))
   api(project(":util"))
 

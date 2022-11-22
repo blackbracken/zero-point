@@ -2,24 +2,31 @@ package black.bracken.zeropoint.feature.setup.choosesource
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import black.bracken.zeropoint.data.kernel.domain.error.ValorantApiException
 import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
+import black.bracken.zeropoint.uishare.ext.errorMessageResource
+import black.bracken.zeropoint.uishare.util.StringResource
 import black.bracken.zeropoint.util.ext.emitRenewedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.serialization.SerializationException
 import javax.inject.Inject
+import black.bracken.zeropoint.resource.R as ResR
 
 data class ChooseSourceUiState(
   val shouldOpenInputPlayerNameModal: Boolean = false,
   val isLoadingOnModal: Boolean = false,
+  val errorTextOnModal: StringResource? = null,
   val riotId: String = "",
   val tagline: String = "",
 ) {
   companion object {
     val Initial = ChooseSourceUiState(
       shouldOpenInputPlayerNameModal = false,
+      errorTextOnModal = null,
       isLoadingOnModal = false,
     )
   }
@@ -70,12 +77,26 @@ class ChooseSourceViewModel @Inject constructor(
       )
         .onSuccess { account ->
           localCacheRepository.setPlayerId(account.playerId)
+
+          _uiState.emit(
+            snapshot.copy(
+              isLoadingOnModal = false,
+              errorTextOnModal = null,
+            )
+          )
         }
         .onFailure { throwable ->
-          // TODO: handle error
+          _uiState.emit(
+            snapshot.copy(
+              isLoadingOnModal = false,
+              errorTextOnModal = when (throwable) {
+                is SerializationException -> StringResource(ResR.string.error_serialization)
+                is ValorantApiException -> throwable.errorMessageResource
+                else -> StringResource(ResR.string.error_unknown, throwable.message.toString())
+              }
+            )
+          )
         }
-
-      _uiState.emit(snapshot.copy(isLoadingOnModal = false))
     }
   }
 

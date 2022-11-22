@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_serialization">データのシリアライズに失敗しました</string>
+    <string name="error_bad_request">不正なリクエストが送信されました</string>
+    <string name="error_forbidden">アクセス不能なロケーションにリクエストされました</string>
+    <string name="error_player_not_found">該当するプレイヤーが見つかりません</string>
+    <string name="error_timeout">接続がタイムアウトしました</string>
+    <string name="error_too_many_requests">APIリクエストの上限に達しました</string>
+    <string name="error_service_unavailable">サーバーが稼働していません</string>
+    <string name="error_unknown">不明なエラーが発生しました: %1$s</string>
+</resources>

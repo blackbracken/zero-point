@@ -1,6 +1,7 @@
 package black.bracken.zeropoint.feature.setup.choosesource
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -37,6 +38,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
@@ -81,6 +83,7 @@ fun ChooseSourceScreen(
   uiState: ChooseSourceUiState,
   uiAction: ChooseSourceUiAction,
 ) {
+  val context = LocalContext.current
   val keyboardController = LocalSoftwareKeyboardController.current
   val focusManager = LocalFocusManager.current
 
@@ -123,6 +126,7 @@ fun ChooseSourceScreen(
           riotId = uiState.riotId,
           tagline = uiState.tagline,
           isLoadingOnModal = uiState.isLoadingOnModal,
+          errorText = uiState.errorTextOnModal?.getString(context),
           onChangeRiotId = uiAction.onChangeRiotId,
           onChangeTagline = uiAction.onChangeTagline,
           onConfirmPlayerName = uiAction.onConfirmPlayerName,
@@ -261,6 +265,7 @@ private fun InputPlayerNameModalBottomSheetContent(
   riotId: String,
   tagline: String,
   isLoadingOnModal: Boolean,
+  errorText: String?,
   onChangeRiotId: (String) -> Unit,
   onChangeTagline: (String) -> Unit,
   onConfirmPlayerName: () -> Unit,
@@ -311,6 +316,18 @@ private fun InputPlayerNameModalBottomSheetContent(
         onValueChange = onChangeTagline,
         modifier = Modifier.weight(4f / 10)
       )
+    }
+
+    Spacer(modifier = Modifier.height(4.dp))
+
+    AnimatedVisibility(visible = !errorText.isNullOrBlank()) {
+      Text(
+        text = errorText ?: "",
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.error,
+        modifier = Modifier.padding(start = 8.dp)
+      )
+
     }
 
     Spacer(modifier = Modifier.height(16.dp))
