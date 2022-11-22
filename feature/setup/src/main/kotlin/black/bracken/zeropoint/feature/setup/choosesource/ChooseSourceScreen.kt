@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetLayout
@@ -313,8 +314,10 @@ private fun InputPlayerNameModalBottomSheetContent(
 
       Text(
         text = "#",
-        style = MaterialTheme.typography.bodyLarge,
-        modifier = Modifier.padding(horizontal = 8.dp)
+        style = MaterialTheme.typography.bodyMedium,
+        modifier = Modifier
+          .wrapContentHeight()
+          .padding(horizontal = 8.dp),
       )
 
       OutlinedTextField(
