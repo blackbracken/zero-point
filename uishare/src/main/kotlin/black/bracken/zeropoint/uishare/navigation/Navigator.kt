@@ -6,7 +6,7 @@ import androidx.navigation.NavController
 object NoArgs
 
 interface Navigator<in P> {
-  val destinationId: String
+  val destination: NavRoute
   val arguments: List<NamedNavArgument>
 
   fun navigate(navController: NavController, param: P)

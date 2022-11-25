@@ -42,7 +42,7 @@ private fun ZeroPointNavRouter() {
 
   NavHost(
     navController = navController,
-    startDestination = SetupDirection.Root.destinationId,
+    startDestination = SetupDirection.Root.destination.value,
   ) {
     setupNavigation(navController)
   }

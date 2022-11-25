@@ -4,13 +4,13 @@ import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavController
 
 class NoArgsNavigator(
-  override val destinationId: String,
+  override val destination: NavRoute,
 ) : Navigator<NoArgs> {
 
   override val arguments: List<NamedNavArgument> = emptyList()
 
   override fun navigate(navController: NavController, param: NoArgs) {
-    navController.navigate(destinationId)
+    navController.navigate(destination.value)
   }
 
 }

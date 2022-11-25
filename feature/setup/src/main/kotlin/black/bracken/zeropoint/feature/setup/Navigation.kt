@@ -10,11 +10,11 @@ import black.bracken.zeropoint.uishare.navigation.direction.SetupDirection
 
 fun NavGraphBuilder.setupNavigation(navController: NavController) {
   navigation(
-    startDestination = SetupDirection.ChooseSource.destinationId,
-    route = SetupDirection.Root.destinationId,
+    startDestination = SetupDirection.ChooseSource.destination.value,
+    route = SetupDirection.Root.destination.value,
   ) {
     composable(
-      route = SetupDirection.ChooseSource.destinationId,
+      route = SetupDirection.ChooseSource.destination.value,
     ) {
       ChooseSourceScreenCoordinator(
         viewModel = hiltViewModel(),
