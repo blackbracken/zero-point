@@ -27,6 +27,5 @@ dependencies {
   implementation(project(":uishare"))
   implementation(project(":feature:setup"))
 
-  implementation(libs.findLibrary("androidxComposeMaterial"))
   implementation(libs.findLibrary("androidxCoreSplashscreen"))
 }

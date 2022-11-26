@@ -3,13 +3,12 @@ package black.bracken.zeropoint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.Surface
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
 import black.bracken.zeropoint.feature.setup.setupNavigation
-import black.bracken.zeropoint.ui.theme.ZeroPointTheme
 import black.bracken.zeropoint.uishare.navigation.router.ZeroRouter
+import black.bracken.zeropoint.uishare.theme.ZeroTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -26,11 +25,9 @@ class MainActivity : ComponentActivity() {
     WindowCompat.setDecorFitsSystemWindows(window, false)
 
     setContent {
-      ZeroPointTheme {
-        Surface {
-          ZeroRouter { navController ->
-            setupNavigation(navController)
-          }
+      ZeroTheme {
+        ZeroRouter { navController ->
+          setupNavigation(navController)
         }
       }
     }

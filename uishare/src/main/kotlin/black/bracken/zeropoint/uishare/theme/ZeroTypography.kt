@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.ui.theme
+package black.bracken.zeropoint.uishare.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.graphics.Color
@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.Color
 //   from: ([ ]+)([^ ]+) =,
 //   to  : $1$2 = default.$2.copy(color = Color.White),
 
-val LightTypography = Typography().let { default ->
+internal val ZeroLightTypography = Typography().let { default ->
   default.copy(
     displayLarge = default.displayLarge.copy(color = Color.Black),
     displayMedium = default.displayMedium.copy(color = Color.Black),
@@ -27,7 +27,7 @@ val LightTypography = Typography().let { default ->
   )
 }
 
-val DarkTypography = Typography().let { default ->
+internal val ZeroDarkTypography = Typography().let { default ->
   default.copy(
     displayLarge = default.displayLarge.copy(color = Color.White),
     displayMedium = default.displayMedium.copy(color = Color.White),
