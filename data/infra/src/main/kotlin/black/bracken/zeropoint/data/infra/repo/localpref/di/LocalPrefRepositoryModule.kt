@@ -1,8 +1,8 @@
-package black.bracken.zeropoint.data.infra.repo.localcache.di
+package black.bracken.zeropoint.data.infra.repo.localpref.di
 
 import android.content.Context
-import black.bracken.zeropoint.data.infra.repo.localcache.DeviceLocalCacheRepository
-import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
+import black.bracken.zeropoint.data.infra.repo.localpref.DeviceLocalPrefRepository
+import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,14 +12,14 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object LocalCacheRepositoryModule {
+object LocalPrefRepositoryModule {
 
   @Provides
   @Singleton
-  fun provideLocalCacheRepository(
+  fun provideLocalPrefRepository(
     @ApplicationContext context: Context,
-  ): LocalCacheRepository {
-    return DeviceLocalCacheRepository(context)
+  ): LocalPrefRepository {
+    return DeviceLocalPrefRepository(context)
   }
 
 }

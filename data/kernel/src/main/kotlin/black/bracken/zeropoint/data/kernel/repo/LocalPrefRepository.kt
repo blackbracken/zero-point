@@ -4,7 +4,7 @@ import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.domain.PlayerId
 import kotlinx.coroutines.flow.Flow
 
-interface LocalCacheRepository {
+interface LocalPrefRepository {
 
   val playerIdFlow: Flow<PlayerId?>
 

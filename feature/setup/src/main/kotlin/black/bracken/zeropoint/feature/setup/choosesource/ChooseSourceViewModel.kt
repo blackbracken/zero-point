@@ -3,7 +3,7 @@ package black.bracken.zeropoint.feature.setup.choosesource
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import black.bracken.zeropoint.data.kernel.domain.error.ValorantApiException
-import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
+import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import black.bracken.zeropoint.uishare.ext.errorMessageResource
 import black.bracken.zeropoint.uishare.util.StringResource
@@ -18,7 +18,7 @@ import black.bracken.zeropoint.resource.R as ResR
 
 @HiltViewModel
 class ChooseSourceViewModel @Inject constructor(
-  private val localCacheRepository: LocalCacheRepository,
+  private val localPrefRepository: LocalPrefRepository,
   private val valorantApiRepository: ValorantApiRepository,
 ) : ViewModel() {
 
@@ -50,7 +50,7 @@ class ChooseSourceViewModel @Inject constructor(
         snapshot.tagline,
       )
         .onSuccess { account ->
-          localCacheRepository.setPlayerId(account.playerId)
+          localPrefRepository.setPlayerId(account.playerId)
 
           _uiState.emit(
             snapshot.copy(

@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
-import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
+import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.feature.setup.setupNavigation
 import black.bracken.zeropoint.uishare.navigation.router.ZeroRouter
 import black.bracken.zeropoint.uishare.theme.ZeroTheme
@@ -16,7 +16,7 @@ import javax.inject.Inject
 class MainActivity : ComponentActivity() {
 
   @Inject
-  lateinit var localCacheRepository: LocalCacheRepository
+  lateinit var localPrefRepository: LocalPrefRepository
 
   override fun onCreate(savedInstanceState: Bundle?) {
     installSplashScreen()

@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.data.infra.repo.localcache
+package black.bracken.zeropoint.data.infra.repo.localpref
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -9,18 +9,18 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.domain.PlayerId
-import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
+import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "localCache")
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "localPref")
 
-class DeviceLocalCacheRepository(
+class DeviceLocalPrefRepository(
   private val context: Context,
-) : LocalCacheRepository {
+) : LocalPrefRepository {
 
   private val dataFlow = context.dataStore.data
 

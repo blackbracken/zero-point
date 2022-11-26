@@ -1,13 +1,13 @@
-package black.bracken.zeropoint.data.infra.repo.localcache
+package black.bracken.zeropoint.data.infra.repo.localpref
 
 import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.domain.PlayerId
 import black.bracken.zeropoint.data.kernel.domain.fake
-import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
+import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-object FakeLocalCacheRepository : LocalCacheRepository {
+object FakeLocalPrefRepository : LocalPrefRepository {
 
   override val playerIdFlow: Flow<PlayerId?> = flowOf(PlayerId.fake())
 
