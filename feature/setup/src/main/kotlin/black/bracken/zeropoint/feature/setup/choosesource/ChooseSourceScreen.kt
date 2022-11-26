@@ -353,7 +353,10 @@ private fun InputPlayerNameModalBottomSheetContent(
 
     Button(
       onClick = onConfirmPlayerName,
-      enabled = riotId.isNotEmpty() && tagline.isNotEmpty() && !isLoadingOnModal,
+      enabled = riotId.isNotEmpty()
+        && tagline.isNotEmpty()
+        && tagline.length <= 5
+        && !isLoadingOnModal,
       modifier = Modifier.align(Alignment.End),
     ) {
       Text(
