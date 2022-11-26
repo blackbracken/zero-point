@@ -1,5 +1,6 @@
 package black.bracken.zeropoint.data.infra.repo.localcache
 
+import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.domain.PlayerId
 import black.bracken.zeropoint.data.kernel.domain.fake
 import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
@@ -16,8 +17,9 @@ object FakeLocalCacheRepository : LocalCacheRepository {
 
   override suspend fun clearPlayerId() = Unit
 
-  override fun shouldUseRemoteDataSource(): Boolean = false
+  override fun getChosenApiDataSource(): ChosenApiDataSource = ChosenApiDataSource.FAKE
 
-  override suspend fun setShouldUseRemoteDataSource(shouldUseRemoteDataSource: Boolean) = Unit
+  override suspend fun setChosenApiDataSource(chosenApiDataSource: ChosenApiDataSource) = Unit
+
 
 }

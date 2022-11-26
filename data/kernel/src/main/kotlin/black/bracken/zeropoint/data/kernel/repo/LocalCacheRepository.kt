@@ -1,5 +1,6 @@
 package black.bracken.zeropoint.data.kernel.repo
 
+import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.domain.PlayerId
 import kotlinx.coroutines.flow.Flow
 
@@ -13,8 +14,8 @@ interface LocalCacheRepository {
 
   suspend fun clearPlayerId()
 
-  fun shouldUseRemoteDataSource(): Boolean
+  fun getChosenApiDataSource(): ChosenApiDataSource
 
-  suspend fun setShouldUseRemoteDataSource(shouldUseRemoteDataSource: Boolean)
+  suspend fun setChosenApiDataSource(chosenApiDataSource: ChosenApiDataSource)
 
 }

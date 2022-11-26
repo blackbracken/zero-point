@@ -3,6 +3,7 @@ package black.bracken.zeropoint.data.infra.repo.valorantapi.di
 import black.bracken.zeropoint.data.infra.repo.valorantapi.FakeValorantApiRepository
 import black.bracken.zeropoint.data.infra.repo.valorantapi.RemoteValorantApiRepository
 import black.bracken.zeropoint.data.infra.repo.valorantapi.UnofficialValorantApiDataSource
+import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.repo.LocalCacheRepository
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import dagger.Module
@@ -21,7 +22,7 @@ object ValorantApiRepositoryModule {
     localCacheRepository: LocalCacheRepository,
     unofficialValorantApiDataSource: UnofficialValorantApiDataSource,
   ): ValorantApiRepository {
-    return if (localCacheRepository.shouldUseRemoteDataSource()) {
+    return if (localCacheRepository.getChosenApiDataSource() == ChosenApiDataSource.REMOTE) {
       RemoteValorantApiRepository(unofficialValorantApiDataSource)
     } else {
       FakeValorantApiRepository
