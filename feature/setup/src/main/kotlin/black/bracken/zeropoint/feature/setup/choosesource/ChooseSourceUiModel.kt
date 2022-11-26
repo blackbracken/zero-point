@@ -21,6 +21,7 @@ data class ChooseSourceUiState(
 fun ChooseSourceUiState.Companion.fake() = Initial
 
 data class ChooseSourceUiAction(
+  val navigateToHome: () -> Unit,
   val onChooseRemoteSource: () -> Unit,
   val onChooseFakeSource: () -> Unit,
   val onCloseBottomSheet: () -> Unit,
@@ -33,6 +34,7 @@ data class ChooseSourceUiAction(
 }
 
 fun ChooseSourceUiAction.Companion.fake() = ChooseSourceUiAction(
+  navigateToHome = {},
   onChooseRemoteSource = {},
   onChooseFakeSource = {},
   onCloseBottomSheet = {},

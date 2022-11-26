@@ -25,6 +25,7 @@ dependencies {
   implementation(project(":data:infra"))
   implementation(project(":uishare"))
   implementation(project(":feature:setup"))
+  implementation(project(":feature:home"))
 
   implementation(libs.findLibrary("androidxCoreSplashscreen"))
 }

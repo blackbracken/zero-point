@@ -26,6 +26,7 @@
             <option value="$PROJECT_DIR$/data/infra" />
             <option value="$PROJECT_DIR$/data/kernel" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/home" />
             <option value="$PROJECT_DIR$/feature/setup" />
             <option value="$PROJECT_DIR$/gradle" />
             <option value="$PROJECT_DIR$/gradle/plugins" />

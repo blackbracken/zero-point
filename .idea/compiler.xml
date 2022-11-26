@@ -5,7 +5,6 @@
       <module name="ZeroPoint.data.infra.test" target="17" />
       <module name="ZeroPoint.data.main" target="17" />
       <module name="ZeroPoint.data.test" target="17" />
-      <module name="ZeroPoint.feature.top" target="17" />
       <module name="ZeroPoint.featurecommon" target="17" />
       <module name="ZeroPoint.testing" target="17" />
       <module name="ZeroPoint.testing.main" target="17" />

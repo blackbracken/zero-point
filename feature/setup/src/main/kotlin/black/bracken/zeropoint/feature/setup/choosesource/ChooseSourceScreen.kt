@@ -57,14 +57,16 @@ import black.bracken.zeropoint.resource.R as ResR
 @Composable
 fun ChooseSourceScreenCoordinator(
   viewModel: ChooseSourceViewModel,
+  navigateToHome: () -> Unit,
 ) {
   val uiState by viewModel.uiState.collectAsState()
 
   ChooseSourceScreen(
     uiState = uiState,
     uiAction = ChooseSourceUiAction(
+      navigateToHome = navigateToHome,
       onChooseRemoteSource = viewModel::onClickRemoteButton,
-      onChooseFakeSource = {}, // TODO
+      onChooseFakeSource = navigateToHome, // TODO
       onCloseBottomSheet = viewModel::onCloseBottomSheet,
       onChangeRiotId = viewModel::onChangeRiotId,
       onChangeTagline = viewModel::onChangeTagline,

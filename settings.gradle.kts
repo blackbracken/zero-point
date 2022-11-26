@@ -29,6 +29,7 @@ include(
   ":gradle:plugins",
   ":uishare",
   ":feature:setup",
+  ":feature:home",
   ":resource",
   ":util",
 )
