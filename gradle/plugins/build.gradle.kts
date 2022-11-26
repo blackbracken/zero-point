@@ -45,10 +45,5 @@ gradlePlugin {
       id = "zeropoint.primitive.test"
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.TestPlugin"
     }
-
-    register("testJvm") {
-      id = "zeropoint.primitive.test.jvm"
-      implementationClass = "black.bracken.zeropoint.buildlogic.primitive.TestJvmPlugin"
-    }
   }
 }

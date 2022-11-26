@@ -22,6 +22,7 @@ junit = "4.13.2"
 ktlintGradle = "11.0.0"
 detekt = "1.22.0-RC1"
 kotest = "5.4.2"
+mockk = "1.13.2"
 
 [libraries]
 androidGradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android" }
@@ -74,6 +75,10 @@ androidxComposeUiTestManifest = { module = "androidx.compose.ui:ui-test-manifest
 kotestAssertion = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 
 detektGradlePlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+mockkAndroid = { module = "io.mockk:mockk-android", version.ref = "mockk" }
+mockkAgent = { module = "io.mockk:mockk-agent", version.ref = "mockk" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "android" }
