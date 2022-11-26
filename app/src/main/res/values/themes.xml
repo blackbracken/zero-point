@@ -3,5 +3,14 @@
 
     <style name="Theme.ZeroPoint" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/valorant_red</item>
+        <item name="postSplashScreenTheme">@style/Theme.ZeroPoint</item>
     </style>
+
+    <style name="Theme.ZeroSplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/zeropoint_splash_logo</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.ZeroPoint</item>
+    </style>
+
 </resources>
