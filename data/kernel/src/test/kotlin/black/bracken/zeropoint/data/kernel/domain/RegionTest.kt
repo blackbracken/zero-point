@@ -7,14 +7,14 @@ import kotlin.test.Test
 class RegionTest {
 
   @Test
-  fun from_returnsRegion_exists() {
+  fun from_returnsRegion_givenExists() {
     val actual = Region.from("ap")
 
     actual.shouldBe(Region.AP)
   }
 
   @Test
-  fun from_throwsException_NotExists() {
+  fun from_throwsException_givenNotExists() {
     shouldThrowExactly<IllegalArgumentException> {
       Region.from("not-exists-region")
     }
