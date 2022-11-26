@@ -45,5 +45,10 @@ gradlePlugin {
       id = "zeropoint.primitive.test"
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.TestPlugin"
     }
+
+    register("testAndroid") {
+      id = "zeropoint.primitive.test.android"
+      implementationClass = "black.bracken.zeropoint.buildlogic.primitive.TestAndroidPlugin"
+    }
   }
 }

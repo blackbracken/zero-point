@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.data.infra.repo.localpref
+package black.bracken.zeropoint.data.kernel.repo.fake
 
 import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.domain.PlayerId

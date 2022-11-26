@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.data.infra.repo.valorantapi
+package black.bracken.zeropoint.data.kernel.repo.fake
 
 import black.bracken.zeropoint.data.kernel.domain.Account
 import black.bracken.zeropoint.data.kernel.domain.fake

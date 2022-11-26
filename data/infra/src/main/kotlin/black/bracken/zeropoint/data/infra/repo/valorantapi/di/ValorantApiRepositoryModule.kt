@@ -1,11 +1,11 @@
 package black.bracken.zeropoint.data.infra.repo.valorantapi.di
 
-import black.bracken.zeropoint.data.infra.repo.valorantapi.FakeValorantApiRepository
 import black.bracken.zeropoint.data.infra.repo.valorantapi.RemoteValorantApiRepository
 import black.bracken.zeropoint.data.infra.repo.valorantapi.UnofficialValorantApiDataSource
 import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
+import black.bracken.zeropoint.data.kernel.repo.fake.FakeValorantApiRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

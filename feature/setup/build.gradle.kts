@@ -4,6 +4,8 @@ import black.bracken.zeropoint.buildlogic.dsl.libs
 plugins {
   id("zeropoint.primitive.androidLibrary")
   id("zeropoint.primitive.android.compose")
+  id("zeropoint.primitive.test")
+  id("zeropoint.primitive.test.android")
 }
 
 android.namespace = "black.bracken.zeropoint.feature.setup"

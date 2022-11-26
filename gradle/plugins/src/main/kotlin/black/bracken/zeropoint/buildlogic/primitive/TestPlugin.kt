@@ -13,9 +13,12 @@ class TestPlugin : Plugin<Project> {
   override fun apply(target: Project) {
     with(target) {
       dependencies {
-        unsafeTestImplementation(kotlin("test"))
         unsafeTestImplementation(kotlin("test-common"))
         unsafeTestImplementation(kotlin("test-annotations-common"))
+
+        unsafeTestImplementation(kotlin("test")) // runs on junit
+
+        testImplementation(libs.findLibrary("kotlinxCoroutinesTest"))
 
         testImplementation(libs.findLibrary("kotestAssertion"))
         testImplementation(libs.findLibrary("mockk"))

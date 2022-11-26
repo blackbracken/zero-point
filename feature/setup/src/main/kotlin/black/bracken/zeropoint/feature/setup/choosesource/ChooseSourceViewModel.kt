@@ -1,5 +1,6 @@
 package black.bracken.zeropoint.feature.setup.choosesource
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import black.bracken.zeropoint.data.kernel.domain.error.ValorantApiException
@@ -22,7 +23,8 @@ class ChooseSourceViewModel @Inject constructor(
   private val valorantApiRepository: ValorantApiRepository,
 ) : ViewModel() {
 
-  private val _uiState = MutableStateFlow(ChooseSourceUiState.Initial)
+  @VisibleForTesting
+  val _uiState = MutableStateFlow(ChooseSourceUiState.Initial)
   val uiState get() = _uiState.asStateFlow()
 
   fun onChangeRiotId(riotId: String) {
