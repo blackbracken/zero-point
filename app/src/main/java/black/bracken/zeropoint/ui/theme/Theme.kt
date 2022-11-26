@@ -9,7 +9,7 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.material.MaterialTheme as M2MaterialTheme
+import androidx.compose.material.MaterialTheme as Md2MaterialTheme
 
 @SuppressLint("ConflictingOnColor")
 private val DarkColorPalette = darkColors(
@@ -78,7 +78,7 @@ fun ZeroPointTheme(
     LightTypography
   }
 
-  M2MaterialTheme(
+  Md2MaterialTheme(
     colors = colors,
     shapes = Shapes
   ) {

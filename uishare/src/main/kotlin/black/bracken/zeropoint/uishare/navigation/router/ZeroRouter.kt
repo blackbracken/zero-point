@@ -3,9 +3,6 @@ package black.bracken.zeropoint.uishare.navigation.router
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -21,6 +18,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import black.bracken.zeropoint.uishare.navigation.direction.SetupDirection
+import androidx.compose.material.BottomNavigation as Md2BottomNavigation
+import androidx.compose.material.BottomNavigationItem as Md2BottomNavigationItem
+import androidx.compose.material.Icon as Md2Icon
 import androidx.compose.material.Text as MD2Text
 
 private val RoutesShouldNotShow = setOf(
@@ -68,11 +68,11 @@ private fun ZeroBottomBar(
 ) {
   val context = LocalContext.current
 
-  BottomNavigation(
+  Md2BottomNavigation(
     modifier = Modifier.navigationBarsPadding()
   ) {
     ZeroRouterItem.values().forEach { item ->
-      BottomNavigationItem(
+      Md2BottomNavigationItem(
         selected = currentDestination?.hierarchy
           ?.any { it.route == item.route.value }
           ?: false,
@@ -87,7 +87,7 @@ private fun ZeroBottomBar(
           }
         },
         icon = {
-          Icon(
+          Md2Icon(
             imageVector = item.imageVector,
             contentDescription = null,
           )
