@@ -9,6 +9,8 @@
     <string name="error_service_unavailable">Server is not running</string>
     <string name="error_unknown">An unknown error has occurred: %1$s</string>
 
+    <string name="bottom_nav_label_timeline" translatable="false">Timeline</string>
+
     <string name="choose_source_title" translatable="false">ZERO-POINT</string>
     <string name="choose_source_subtitle" translatable="false">AN UNOFFICIAL VALORANT STATS VIEWER</string>
     <string name="choose_source_modal_riot_id_label" translatable="false">Riot ID</string>

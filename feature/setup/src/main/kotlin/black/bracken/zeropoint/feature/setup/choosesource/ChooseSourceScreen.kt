@@ -13,10 +13,7 @@ import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -139,9 +136,7 @@ fun ChooseSourceScreen(
       topStart = 4.dp,
       topEnd = 4.dp,
     ),
-    modifier = Modifier
-      .fillMaxSize()
-      .systemBarsPadding(),
+    modifier = Modifier.fillMaxSize(),
   ) {
     ChooseSourceBackground(
       modifier = Modifier.fillMaxSize(),
@@ -281,8 +276,6 @@ private fun InputPlayerNameModalBottomSheetContent(
 ) {
   Column(
     modifier = Modifier
-      .navigationBarsPadding()
-      .imePadding()
       .fillMaxWidth()
       .padding(horizontal = 16.dp),
   ) {
