@@ -13,4 +13,7 @@ dependencies {
   implementation(project(":uishare"))
   implementation(project(":resource"))
   implementation(project(":data:kernel"))
+
+  implementation(libs.coil)
+  implementation(libs.coilCompose)
 }
