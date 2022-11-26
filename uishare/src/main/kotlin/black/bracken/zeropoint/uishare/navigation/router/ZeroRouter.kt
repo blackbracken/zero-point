@@ -21,7 +21,7 @@ import black.bracken.zeropoint.uishare.navigation.direction.SetupDirection
 import androidx.compose.material.BottomNavigation as Md2BottomNavigation
 import androidx.compose.material.BottomNavigationItem as Md2BottomNavigationItem
 import androidx.compose.material.Icon as Md2Icon
-import androidx.compose.material.Text as MD2Text
+import androidx.compose.material.Text as Md2Text
 
 private val RoutesShouldNotShow = setOf(
   SetupDirection.Root.destination,
@@ -40,7 +40,7 @@ fun ZeroRouter(
 
   Scaffold(
     bottomBar = {
-      if (RoutesShouldNotShow.none { it.value == currentDestination?.route }) {
+      if (currentDestination != null && RoutesShouldNotShow.none { it.value == currentDestination.route }) {
         ZeroBottomBar(
           navController = navController,
           currentDestination = currentDestination,
@@ -93,7 +93,7 @@ private fun ZeroBottomBar(
           )
         },
         label = {
-          MD2Text(text = item.label.getString(context))
+          Md2Text(text = item.label.getString(context))
         }
       )
     }
