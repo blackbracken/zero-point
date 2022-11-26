@@ -13,17 +13,17 @@ sealed class ValorantApiException(
 
   data class Unknown(override val message: String? = null) : ValorantApiException()
 
-  companion object
+  companion object {
+    fun fromStatusCode(code: Int): ValorantApiException =
+      when (code) {
+        400 -> BadRequest
+        403 -> Forbidden
+        404 -> NotFound
+        408 -> Timeout
+        429 -> TooManyRequests
+        503 -> ServiceUnavailable
+        else -> Unknown()
+      }
+  }
 
 }
-
-fun ValorantApiException.Companion.fromStatusCode(code: Int): ValorantApiException =
-  when (code) {
-    400 -> ValorantApiException.BadRequest
-    403 -> ValorantApiException.Forbidden
-    404 -> ValorantApiException.NotFound
-    408 -> ValorantApiException.Timeout
-    429 -> ValorantApiException.TooManyRequests
-    503 -> ValorantApiException.ServiceUnavailable
-    else -> ValorantApiException.Unknown()
-  }
