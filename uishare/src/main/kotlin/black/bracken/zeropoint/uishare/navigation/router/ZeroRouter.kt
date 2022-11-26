@@ -18,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import black.bracken.zeropoint.uishare.navigation.direction.SetupDirection
+import black.bracken.zeropoint.uishare.theme.ZeroColorTokens
 import androidx.compose.material.BottomNavigation as Md2BottomNavigation
 import androidx.compose.material.BottomNavigationItem as Md2BottomNavigationItem
 import androidx.compose.material.Icon as Md2Icon
@@ -69,7 +70,8 @@ private fun ZeroBottomBar(
   val context = LocalContext.current
 
   Md2BottomNavigation(
-    modifier = Modifier.navigationBarsPadding()
+    backgroundColor = ZeroColorTokens.valorantRed,
+    modifier = Modifier.navigationBarsPadding(),
   ) {
     ZeroRouterItem.values().forEach { item ->
       Md2BottomNavigationItem(
