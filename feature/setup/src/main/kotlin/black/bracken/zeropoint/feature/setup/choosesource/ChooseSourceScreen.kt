@@ -76,13 +76,33 @@ fun ChooseSourceScreenCoordinator(
   )
 }
 
+
+@Composable
+fun ChooseSourceScreen(
+  uiState: ChooseSourceUiState,
+  uiAction: ChooseSourceUiAction,
+) {
+  when (uiState) {
+    is ChooseSourceUiState.Choose -> {
+      ChooseSourceChooseContent(
+        uiState = uiState,
+        uiAction = uiAction,
+      )
+    }
+
+    is ChooseSourceUiState.NavigateToHome -> {
+      uiAction.navigateToHome()
+    }
+  }
+}
+
 @OptIn(
   ExperimentalMaterialApi::class,
   ExperimentalComposeUiApi::class
 )
 @Composable
-fun ChooseSourceScreen(
-  uiState: ChooseSourceUiState,
+private fun ChooseSourceChooseContent(
+  uiState: ChooseSourceUiState.Choose,
   uiAction: ChooseSourceUiAction,
 ) {
   val context = LocalContext.current

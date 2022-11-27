@@ -8,7 +8,7 @@ import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import black.bracken.zeropoint.uishare.ext.errorMessageResource
 import black.bracken.zeropoint.uishare.util.StringResource
-import black.bracken.zeropoint.util.ext.emitRenewedIn
+import black.bracken.zeropoint.util.ext.valueIfMatchType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,23 +28,25 @@ class ChooseSourceViewModel @Inject constructor(
   val uiState get() = _uiState.asStateFlow()
 
   fun onChangeRiotId(riotId: String) {
-    _uiState.emitRenewedIn(viewModelScope) { uiState ->
-      uiState.copy(riotId = riotId)
+    val snapshot = _uiState.valueIfMatchType<ChooseSourceUiState.Choose>() ?: return
+
+    viewModelScope.launch {
+      _uiState.emit(snapshot.copy(riotId = riotId))
     }
   }
 
   fun onChangeTagline(tagline: String) {
-    _uiState.emitRenewedIn(viewModelScope) { uiState ->
-      uiState.copy(
-        tagline = tagline
-      )
+    val snapshot = _uiState.valueIfMatchType<ChooseSourceUiState.Choose>() ?: return
+
+    viewModelScope.launch {
+      _uiState.emit(snapshot.copy(tagline = tagline))
     }
   }
 
   fun onConfirmPlayerName() {
-    viewModelScope.launch {
-      val snapshot = uiState.value
+    val snapshot = _uiState.valueIfMatchType<ChooseSourceUiState.Choose>() ?: return
 
+    viewModelScope.launch {
       _uiState.emit(snapshot.copy(isLoadingOnModal = true))
 
       valorantApiRepository.getAccount(
@@ -77,21 +79,27 @@ class ChooseSourceViewModel @Inject constructor(
   }
 
   fun onClickRemoteButton() {
-    _uiState.emitRenewedIn(viewModelScope) { uiState ->
-      uiState.copy(shouldOpenInputPlayerNameModal = true)
+    val snapshot = _uiState.valueIfMatchType<ChooseSourceUiState.Choose>() ?: return
+
+    viewModelScope.launch {
+      _uiState.emit(snapshot.copy(shouldOpenInputPlayerNameModal = true))
     }
   }
 
   fun onCloseBottomSheet() {
-    _uiState.emitRenewedIn(viewModelScope) { uiState ->
-      uiState.copy(shouldOpenInputPlayerNameModal = false)
+    val snapshot = _uiState.valueIfMatchType<ChooseSourceUiState.Choose>() ?: return
+
+    viewModelScope.launch {
+      _uiState.emit(snapshot.copy(shouldOpenInputPlayerNameModal = false))
     }
   }
 
   fun afterCloseBottomSheet() {
-    if (uiState.value.shouldOpenInputPlayerNameModal) {
-      _uiState.emitRenewedIn(viewModelScope) { uiState ->
-        uiState.copy(shouldOpenInputPlayerNameModal = false)
+    val snapshot = _uiState.valueIfMatchType<ChooseSourceUiState.Choose>() ?: return
+
+    viewModelScope.launch {
+      if (snapshot.shouldOpenInputPlayerNameModal) {
+        _uiState.emit(snapshot.copy(shouldOpenInputPlayerNameModal = false))
       }
     }
   }

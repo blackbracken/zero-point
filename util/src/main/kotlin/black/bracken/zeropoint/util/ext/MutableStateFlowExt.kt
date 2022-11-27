@@ -1,13 +1,7 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package black.bracken.zeropoint.util.ext
 
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.launch
 
-fun <T> MutableStateFlow<T>.emitRenewedIn(scope: CoroutineScope, renews: (T) -> T) {
-  scope.launch { emitRenewed(renews) }
-}
-
-suspend fun <T> MutableStateFlow<T>.emitRenewed(renews: (T) -> T) {
-  emit(renews(value))
-}
+fun <T> MutableStateFlow<in T>.valueIfMatchType(): T? = value as? T

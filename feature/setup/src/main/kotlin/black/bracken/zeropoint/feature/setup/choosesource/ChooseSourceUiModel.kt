@@ -2,20 +2,26 @@ package black.bracken.zeropoint.feature.setup.choosesource
 
 import black.bracken.zeropoint.uishare.util.StringResource
 
-data class ChooseSourceUiState(
-  val shouldOpenInputPlayerNameModal: Boolean = false,
-  val isLoadingOnModal: Boolean = false,
-  val errorTextOnModal: StringResource? = null,
-  val riotId: String = "",
-  val tagline: String = "",
-) {
+sealed interface ChooseSourceUiState {
+
+  data class Choose(
+    val shouldOpenInputPlayerNameModal: Boolean = false,
+    val isLoadingOnModal: Boolean = false,
+    val errorTextOnModal: StringResource? = null,
+    val riotId: String = "",
+    val tagline: String = "",
+  ) : ChooseSourceUiState
+
+  object NavigateToHome : ChooseSourceUiState
+
   companion object {
-    val Initial = ChooseSourceUiState(
+    val Initial: ChooseSourceUiState = Choose(
       shouldOpenInputPlayerNameModal = false,
       errorTextOnModal = null,
       isLoadingOnModal = false,
     )
   }
+
 }
 
 fun ChooseSourceUiState.Companion.fake() = Initial
