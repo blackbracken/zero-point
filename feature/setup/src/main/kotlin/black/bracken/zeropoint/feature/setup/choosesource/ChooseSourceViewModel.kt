@@ -24,7 +24,7 @@ class ChooseSourceViewModel @Inject constructor(
 ) : ViewModel() {
 
   @VisibleForTesting
-  val _uiState = MutableStateFlow(ChooseSourceUiState.Initial)
+  val _uiState = MutableStateFlow<ChooseSourceUiState>(ChooseSourceUiState.Initial)
   val uiState get() = _uiState.asStateFlow()
 
   fun onChangeRiotId(riotId: String) {

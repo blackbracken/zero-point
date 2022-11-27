@@ -15,7 +15,7 @@ sealed interface ChooseSourceUiState {
   object NavigateToHome : ChooseSourceUiState
 
   companion object {
-    val Initial: ChooseSourceUiState = Choose(
+    val Initial: Choose = Choose(
       shouldOpenInputPlayerNameModal = false,
       errorTextOnModal = null,
       isLoadingOnModal = false,

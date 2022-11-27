@@ -6,12 +6,10 @@ import black.bracken.zeropoint.data.kernel.domain.fake
 import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import black.bracken.zeropoint.uishare.ext.errorMessageResource
-import black.bracken.zeropoint.util.ext.emitRenewed
 import black.bracken.zeropoint.util.test.MainDispatcherRule
 import black.bracken.zeropoint.util.test.TestFlowObserver
 import black.bracken.zeropoint.util.test.UiStateScenario
 import black.bracken.zeropoint.util.test.shouldFollowUiStateScenario
-import io.kotest.matchers.collections.shouldContainInOrder
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -25,7 +23,6 @@ class ChooseSourceViewModelTest {
 
   @get:Rule
   val mainDispatcherRule = MainDispatcherRule()
-
 
   private val mockLocalPrefRepository = mockk<LocalPrefRepository>(relaxed = true)
   private val mockValorantApiRepository = mockk<ValorantApiRepository>(relaxed = true)
@@ -44,9 +41,10 @@ class ChooseSourceViewModelTest {
 
     runCurrent()
 
-    uiStateObserver.cancelAndCollectAll().shouldContainInOrder(
-      ChooseSourceUiState.Initial,
-      ChooseSourceUiState.Initial.copy(riotId = riotId),
+    uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
+      UiStateScenario
+        .beginsWith(ChooseSourceUiState.Initial)
+        .then { it.copy(riotId = riotId) }
     )
   }
 
@@ -59,9 +57,10 @@ class ChooseSourceViewModelTest {
 
     runCurrent()
 
-    uiStateObserver.cancelAndCollectAll().shouldContainInOrder(
-      ChooseSourceUiState.Initial,
-      ChooseSourceUiState.Initial.copy(tagline = tagline),
+    uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
+      UiStateScenario
+        .beginsWith(ChooseSourceUiState.Initial)
+        .then { it.copy(tagline = tagline) }
     )
   }
 
@@ -69,7 +68,9 @@ class ChooseSourceViewModelTest {
   fun onConfirmPlayerName_successGetAccount_changeUiState() = runTest {
     val uiStateObserver = TestFlowObserver(this, testScheduler, viewModel.uiState).start()
 
-    viewModel._uiState.emitRenewed { it.copy(shouldOpenInputPlayerNameModal = true) }
+    viewModel._uiState.emit(
+      ChooseSourceUiState.Initial.copy(shouldOpenInputPlayerNameModal = true)
+    )
 
     val account = Account.fake()
     coEvery { mockValorantApiRepository.getAccount(any(), any()) } returns Result.success(account)
@@ -78,7 +79,8 @@ class ChooseSourceViewModelTest {
     runCurrent()
 
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
-      UiStateScenario(ChooseSourceUiState.Initial)
+      UiStateScenario
+        .beginsWith(ChooseSourceUiState.Initial)
         .then { it.copy(shouldOpenInputPlayerNameModal = true) }
         .then { it.copy(isLoadingOnModal = true) }
         .then {
@@ -94,7 +96,9 @@ class ChooseSourceViewModelTest {
   fun onConfirmPlayerName_failureGetAccount_changeUiState() = runTest {
     val uiStateObserver = TestFlowObserver(this, testScheduler, viewModel.uiState).start()
 
-    viewModel._uiState.emitRenewed { it.copy(shouldOpenInputPlayerNameModal = true) }
+    viewModel._uiState.emit(
+      ChooseSourceUiState.Initial.copy(shouldOpenInputPlayerNameModal = true)
+    )
 
     val exception = ValorantApiException.Unknown()
     coEvery { mockValorantApiRepository.getAccount(any(), any()) } returns Result.failure(exception)
@@ -103,7 +107,8 @@ class ChooseSourceViewModelTest {
     runCurrent()
 
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
-      UiStateScenario(ChooseSourceUiState.Initial)
+      UiStateScenario
+        .beginsWith(ChooseSourceUiState.Initial)
         .then { it.copy(shouldOpenInputPlayerNameModal = true) }
         .then { it.copy(isLoadingOnModal = true) }
         .then {
@@ -123,7 +128,8 @@ class ChooseSourceViewModelTest {
     runCurrent()
 
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
-      UiStateScenario(ChooseSourceUiState.Initial)
+      UiStateScenario
+        .beginsWith(ChooseSourceUiState.Initial)
         .then { it.copy(shouldOpenInputPlayerNameModal = true) }
     )
   }
@@ -132,13 +138,16 @@ class ChooseSourceViewModelTest {
   fun onCloseBottomSheet_success_changeUiState() = runTest {
     val uiStateObserver = TestFlowObserver(this, testScheduler, viewModel.uiState).start()
 
-    viewModel._uiState.emitRenewed { it.copy(shouldOpenInputPlayerNameModal = true) }
+    viewModel._uiState.emit(
+      ChooseSourceUiState.Initial.copy(shouldOpenInputPlayerNameModal = true)
+    )
 
     viewModel.onCloseBottomSheet()
     runCurrent()
 
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
-      UiStateScenario(ChooseSourceUiState.Initial)
+      UiStateScenario
+        .beginsWith(ChooseSourceUiState.Initial)
         .then { it.copy(shouldOpenInputPlayerNameModal = true) }
         .then { it.copy(shouldOpenInputPlayerNameModal = false) }
     )
@@ -148,13 +157,16 @@ class ChooseSourceViewModelTest {
   fun afterCloseBottomSheet_success_changeUiState() = runTest {
     val uiStateObserver = TestFlowObserver(this, testScheduler, viewModel.uiState).start()
 
-    viewModel._uiState.emitRenewed { it.copy(shouldOpenInputPlayerNameModal = true) }
+    viewModel._uiState.emit(
+      ChooseSourceUiState.Initial.copy(shouldOpenInputPlayerNameModal = true)
+    )
 
     viewModel.afterCloseBottomSheet()
     runCurrent()
 
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
-      UiStateScenario(ChooseSourceUiState.Initial)
+      UiStateScenario
+        .beginsWith(ChooseSourceUiState.Initial)
         .then { it.copy(shouldOpenInputPlayerNameModal = true) }
         .then { it.copy(shouldOpenInputPlayerNameModal = false) }
     )
