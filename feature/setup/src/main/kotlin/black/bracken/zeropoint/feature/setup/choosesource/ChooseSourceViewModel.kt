@@ -86,6 +86,13 @@ class ChooseSourceViewModel @Inject constructor(
     }
   }
 
+  fun onClickFakeButton() {
+    viewModelScope.launch {
+      // TODO: set fake repository
+      _uiState.emit(ChooseSourceUiState.NavigateToHome)
+    }
+  }
+
   fun onCloseBottomSheet() {
     val snapshot = _uiState.valueIfMatchType<ChooseSourceUiState.Choose>() ?: return
 

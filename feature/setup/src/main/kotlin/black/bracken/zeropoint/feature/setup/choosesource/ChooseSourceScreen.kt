@@ -66,7 +66,7 @@ fun ChooseSourceScreenCoordinator(
     uiAction = ChooseSourceUiAction(
       navigateToHome = navigateToHome,
       onChooseRemoteSource = viewModel::onClickRemoteButton,
-      onChooseFakeSource = navigateToHome, // TODO
+      onChooseFakeSource = viewModel::onClickFakeButton,
       onCloseBottomSheet = viewModel::onCloseBottomSheet,
       onChangeRiotId = viewModel::onChangeRiotId,
       onChangeTagline = viewModel::onChangeTagline,
@@ -91,7 +91,9 @@ fun ChooseSourceScreen(
     }
 
     is ChooseSourceUiState.NavigateToHome -> {
-      uiAction.navigateToHome()
+      LaunchedEffect(uiState) {
+        uiAction.navigateToHome()
+      }
     }
   }
 }
