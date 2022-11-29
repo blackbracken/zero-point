@@ -12,7 +12,7 @@ sealed interface ChooseSourceUiState {
     val tagline: String = "",
   ) : ChooseSourceUiState
 
-  object NavigateToHome : ChooseSourceUiState
+  object RestartApp : ChooseSourceUiState
 
   companion object {
     val Initial: Choose = Choose(

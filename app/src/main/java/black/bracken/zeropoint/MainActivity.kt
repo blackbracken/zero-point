@@ -3,11 +3,16 @@ package black.bracken.zeropoint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.VisibleForTesting
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.feature.home.homeNavigation
 import black.bracken.zeropoint.feature.setup.setupNavigation
+import black.bracken.zeropoint.uishare.navigation.NavRoute
+import black.bracken.zeropoint.uishare.navigation.direction.HomeDirection
+import black.bracken.zeropoint.uishare.navigation.direction.SetupDirection
 import black.bracken.zeropoint.uishare.navigation.router.ZeroRouter
 import black.bracken.zeropoint.uishare.theme.ZeroTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,9 +30,11 @@ class MainActivity : ComponentActivity() {
 
     WindowCompat.setDecorFitsSystemWindows(window, false)
 
+    val startDestination = switchStartDestination(localPrefRepository.getChosenApiDataSource())
+
     setContent {
       ZeroTheme {
-        ZeroRouter { navController ->
+        ZeroRouter(startDestination) { navController ->
           setupNavigation(navController)
           homeNavigation(navController)
         }
@@ -35,4 +42,13 @@ class MainActivity : ComponentActivity() {
     }
   }
 
+}
+
+@VisibleForTesting
+fun switchStartDestination(chosenApiDataSource: ChosenApiDataSource): NavRoute {
+  return if (chosenApiDataSource != ChosenApiDataSource.UNSET) {
+    HomeDirection.Root.destination
+  } else {
+    SetupDirection.Root.destination
+  }
 }

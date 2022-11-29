@@ -3,6 +3,7 @@ package black.bracken.zeropoint.feature.setup.choosesource
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.domain.error.ValorantApiException
 import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
@@ -88,8 +89,9 @@ class ChooseSourceViewModel @Inject constructor(
 
   fun onClickFakeButton() {
     viewModelScope.launch {
-      // TODO: set fake repository
-      _uiState.emit(ChooseSourceUiState.NavigateToHome)
+      localPrefRepository.setChosenApiDataSource(ChosenApiDataSource.FAKE)
+
+      _uiState.emit(ChooseSourceUiState.RestartApp)
     }
   }
 

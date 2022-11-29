@@ -17,6 +17,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import black.bracken.zeropoint.uishare.navigation.NavRoute
 import black.bracken.zeropoint.uishare.navigation.direction.SetupDirection
 import black.bracken.zeropoint.uishare.theme.ZeroColorTokens
 import androidx.compose.material.BottomNavigation as Md2BottomNavigation
@@ -32,6 +33,7 @@ private val RoutesShouldNotShow = setOf(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ZeroRouter(
+  startDestination: NavRoute,
   content: NavGraphBuilder.(NavHostController) -> Unit,
 ) {
   val navController = rememberNavController()
@@ -54,7 +56,7 @@ fun ZeroRouter(
     ) {
       NavHost(
         navController = navController,
-        startDestination = SetupDirection.Root.destination.value,
+        startDestination = startDestination.value,
       ) {
         content(navController)
       }

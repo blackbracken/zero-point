@@ -51,6 +51,7 @@ import androidx.compose.ui.unit.sp
 import black.bracken.zeropoint.uishare.composable.AutoResizeText
 import black.bracken.zeropoint.uishare.composable.LoadIndicatorCover
 import black.bracken.zeropoint.uishare.ext.forceHide
+import black.bracken.zeropoint.uishare.ext.rebirthApplication
 import black.bracken.zeropoint.uishare.theme.ZeroColorTokens
 import black.bracken.zeropoint.resource.R as ResR
 
@@ -90,9 +91,11 @@ fun ChooseSourceScreen(
       )
     }
 
-    is ChooseSourceUiState.NavigateToHome -> {
+    is ChooseSourceUiState.RestartApp -> {
+      val context = LocalContext.current
+
       LaunchedEffect(uiState) {
-        uiAction.navigateToHome()
+        context.rebirthApplication()
       }
     }
   }
