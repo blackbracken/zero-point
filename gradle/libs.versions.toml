@@ -23,7 +23,7 @@ junit = "4.13.2"
 ktlintGradle = "11.0.0"
 detekt = "1.22.0-RC1"
 kotest = "5.4.2"
-mockk = "1.13.2"
+mockk = "1.13.3"
 
 [libraries]
 androidGradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android" }
