@@ -164,7 +164,7 @@ internal class ShimmerModifier(
 
 @Preview
 @Composable
-fun PreviewSkeleton() {
+private fun PreviewSkeleton() {
   Row(
     verticalAlignment = Alignment.CenterVertically,
     modifier = Modifier

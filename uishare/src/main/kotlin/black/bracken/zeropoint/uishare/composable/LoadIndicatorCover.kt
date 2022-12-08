@@ -28,11 +28,12 @@ import black.bracken.zeropoint.resource.R as ResR
 @Composable
 fun LoadIndicatorCover(
   isLoading: Boolean,
+  modifier: Modifier = Modifier,
   content: @Composable () -> Unit,
 ) {
   Box(
     contentAlignment = Alignment.Center,
-    modifier = Modifier.wrapContentSize(),
+    modifier = modifier.wrapContentSize(),
   ) {
     content()
 

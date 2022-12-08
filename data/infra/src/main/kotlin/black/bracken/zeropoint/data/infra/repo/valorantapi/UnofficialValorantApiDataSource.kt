@@ -30,6 +30,15 @@ class UnofficialValorantApiDataSource {
     return jsonObject.mapToEntityOrThrow()
   }
 
+  suspend fun getAccount(
+    playerId: String,
+  ): AccountResponse {
+    val response = client.get("$URL_API_SERVER/v1/by-puuid/account/$playerId")
+    val jsonObject = json.parseToJsonElement(response.bodyAsText()).jsonObject
+
+    return jsonObject.mapToEntityOrThrow()
+  }
+
   @Throws(
     SerializationException::class,
     ValorantApiException::class,
