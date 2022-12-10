@@ -299,11 +299,12 @@ fun PlayerStatusCard(
 @Composable
 private fun MatchResultItem() {
   Row(
+    verticalAlignment = Alignment.CenterVertically,
     modifier = Modifier
       .fillMaxWidth()
       .height(64.dp)
       .clip(RoundedCornerShape(4.dp))
-      .background(ZeroColorTokens.valorantWinner.copy(alpha = 0.15f))
+      .background(ZeroColorTokens.valorantWinner.copy(alpha = 0.15f)),
   ) {
     Box(
       modifier = Modifier
@@ -322,6 +323,37 @@ private fun MatchResultItem() {
         .fillMaxHeight()
         .aspectRatio(1.0f),
     )
+
+    Spacer(modifier = Modifier.width(12.dp))
+
+    Text(
+      text = "15 / 10 / 3",
+      fontSize = 16.sp,
+    )
+
+    Spacer(modifier = Modifier.width(16.dp))
+
+    Column(
+      horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+      Text(
+        text = "VICTORY",
+        fontSize = 16.sp,
+        textAlign = TextAlign.Center,
+      )
+
+      Spacer(modifier = Modifier.height(4.dp))
+
+      Text(
+        text = "13 - 0",
+        fontSize = 16.sp,
+        textAlign = TextAlign.Center,
+      )
+
+      Spacer(modifier = Modifier.height(32.dp))
+
+
+    }
   }
 }
 
