@@ -3,6 +3,7 @@ package black.bracken.zeropoint.uishare.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.material.MaterialTheme as Md2MaterialTheme
 
 @Composable
@@ -22,18 +23,28 @@ fun ZeroTheme(
     ZeroLightTypography
   }
 
-  Md2MaterialTheme(
-    colors = if (darkTheme) {
-      LegacyMd2Theme.DarkColorPalette
-    } else {
-      LegacyMd2Theme.LightColorPalette
-    },
-    shapes = LegacyMd2Theme.Shapes,
+  val zeroColors = if (darkTheme) {
+    DarkZeroColors
+  } else {
+    LightZeroColors
+  }
+
+  CompositionLocalProvider(
+    LocalZeroColors provides zeroColors
   ) {
-    MaterialTheme(
-      colorScheme = colorScheme,
-      typography = typography,
-      content = content,
-    )
+    Md2MaterialTheme(
+      colors = if (darkTheme) {
+        LegacyMd2Theme.DarkColorPalette
+      } else {
+        LegacyMd2Theme.LightColorPalette
+      },
+      shapes = LegacyMd2Theme.Shapes,
+    ) {
+      MaterialTheme(
+        colorScheme = colorScheme,
+        typography = typography,
+        content = content,
+      )
+    }
   }
 }

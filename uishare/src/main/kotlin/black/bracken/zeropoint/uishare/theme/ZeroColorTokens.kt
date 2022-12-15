@@ -7,7 +7,11 @@ object ZeroColorTokens {
   val valorantWinner = Color(0xFF22FFC5)
   val valorantLoser = Color(0xFFFF4655)
 
+  val valorantLoserEmphasisLight = Color(0xFF058463)
+
   val objectLowEmphasis = Color.LightGray
   val objectMediumEmphasis = Color.Gray
   val objectHighEmphasis = Color.DarkGray
+
+  val white = Color.White
 }
