@@ -7,8 +7,8 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
-import black.bracken.zeropoint.data.kernel.domain.PlayerId
+import black.bracken.zeropoint.data.kernel.model.ChosenApiDataSource
+import black.bracken.zeropoint.data.kernel.model.PlayerId
 import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first

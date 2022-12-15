@@ -1,7 +1,7 @@
 package black.bracken.zeropoint.data.kernel.repo
 
-import black.bracken.zeropoint.data.kernel.domain.Account
-import black.bracken.zeropoint.data.kernel.domain.PlayerId
+import black.bracken.zeropoint.data.kernel.model.Account
+import black.bracken.zeropoint.data.kernel.model.PlayerId
 import kotlinx.serialization.SerializationException
 
 interface ValorantApiRepository {

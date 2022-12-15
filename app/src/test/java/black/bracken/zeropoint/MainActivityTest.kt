@@ -1,6 +1,6 @@
 package black.bracken.zeropoint
 
-import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
+import black.bracken.zeropoint.data.kernel.model.ChosenApiDataSource
 import black.bracken.zeropoint.uishare.navigation.direction.HomeDirection
 import black.bracken.zeropoint.uishare.navigation.direction.SetupDirection
 import black.bracken.zeropoint.util.test.MainDispatcherRule

@@ -1,8 +1,8 @@
 package black.bracken.zeropoint.feature.setup.choosesource
 
-import black.bracken.zeropoint.data.kernel.domain.Account
-import black.bracken.zeropoint.data.kernel.domain.error.ValorantApiException
-import black.bracken.zeropoint.data.kernel.domain.fake
+import black.bracken.zeropoint.data.kernel.model.Account
+import black.bracken.zeropoint.data.kernel.model.error.ValorantApiException
+import black.bracken.zeropoint.data.kernel.model.fake
 import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import black.bracken.zeropoint.uishare.ext.errorMessageResource

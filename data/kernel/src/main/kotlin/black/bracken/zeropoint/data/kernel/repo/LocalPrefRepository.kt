@@ -1,7 +1,7 @@
 package black.bracken.zeropoint.data.kernel.repo
 
-import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
-import black.bracken.zeropoint.data.kernel.domain.PlayerId
+import black.bracken.zeropoint.data.kernel.model.ChosenApiDataSource
+import black.bracken.zeropoint.data.kernel.model.PlayerId
 import kotlinx.coroutines.flow.Flow
 
 interface LocalPrefRepository {

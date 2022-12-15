@@ -1,8 +1,8 @@
 package black.bracken.zeropoint.data.infra.repo.valorantapi.response
 
-import black.bracken.zeropoint.data.kernel.domain.Account
-import black.bracken.zeropoint.data.kernel.domain.PlayerId
-import black.bracken.zeropoint.data.kernel.domain.Region
+import black.bracken.zeropoint.data.kernel.model.Account
+import black.bracken.zeropoint.data.kernel.model.PlayerId
+import black.bracken.zeropoint.data.kernel.model.Region
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

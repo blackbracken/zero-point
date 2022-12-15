@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.annotation.VisibleForTesting
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
-import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
+import black.bracken.zeropoint.data.kernel.model.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.feature.home.homeNavigation
 import black.bracken.zeropoint.feature.setup.setupNavigation

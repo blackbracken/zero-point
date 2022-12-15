@@ -1,6 +1,6 @@
 package black.bracken.zeropoint.uishare.ext
 
-import black.bracken.zeropoint.data.kernel.domain.error.ValorantApiException
+import black.bracken.zeropoint.data.kernel.model.error.ValorantApiException
 import black.bracken.zeropoint.uishare.util.StringResource
 import black.bracken.zeropoint.resource.R as ResR
 

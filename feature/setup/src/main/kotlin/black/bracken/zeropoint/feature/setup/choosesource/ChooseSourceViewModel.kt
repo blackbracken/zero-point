@@ -3,9 +3,9 @@ package black.bracken.zeropoint.feature.setup.choosesource
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import black.bracken.zeropoint.data.kernel.domain.ChosenApiDataSource
-import black.bracken.zeropoint.data.kernel.domain.PlayerId
-import black.bracken.zeropoint.data.kernel.domain.error.ValorantApiException
+import black.bracken.zeropoint.data.kernel.model.ChosenApiDataSource
+import black.bracken.zeropoint.data.kernel.model.PlayerId
+import black.bracken.zeropoint.data.kernel.model.error.ValorantApiException
 import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import black.bracken.zeropoint.uishare.ext.errorMessageResource

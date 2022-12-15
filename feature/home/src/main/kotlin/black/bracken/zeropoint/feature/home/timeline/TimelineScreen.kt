@@ -26,7 +26,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -42,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import black.bracken.zeropoint.uishare.composable.LoadIndicatorCover
 import black.bracken.zeropoint.uishare.composable.Skeleton
+import black.bracken.zeropoint.uishare.theme.LocalZeroColors
 import black.bracken.zeropoint.uishare.theme.ZeroColorTokens
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -156,8 +156,6 @@ fun PlayerStatusCard(
         .clip(RoundedCornerShape(8.dp))
         .background(ZeroColorTokens.valorantRed),
     ) {
-      val color = LocalContentColor.current
-      LaunchedEffect(Unit) { println("blackbracken $color") }
       AsyncImage(
         model = ImageRequest.Builder(LocalContext.current)
           .data(fadeFaceUrl)
@@ -304,13 +302,13 @@ private fun MatchResultItem() {
       .fillMaxWidth()
       .height(64.dp)
       .clip(RoundedCornerShape(4.dp))
-      .background(ZeroColorTokens.valorantWinner.copy(alpha = 0.15f)),
+      .background(ZeroColorTokens.valorantLoser.copy(alpha = 0.15f)),
   ) {
     Box(
       modifier = Modifier
         .width(4.dp)
         .fillMaxHeight()
-        .background(ZeroColorTokens.valorantWinner.copy(alpha = 0.8f))
+        .background(ZeroColorTokens.valorantLoser.copy(alpha = 0.8f))
     )
 
     AsyncImage(
@@ -326,15 +324,80 @@ private fun MatchResultItem() {
 
     Spacer(modifier = Modifier.width(12.dp))
 
-    Text(
-      text = "15 / 10 / 3",
-      fontSize = 16.sp,
-    )
+    Column(
+      horizontalAlignment = Alignment.CenterHorizontally,
+      modifier = Modifier
+        .fillMaxHeight()
+        .padding(vertical = 4.dp),
+    ) {
+      AsyncImage(
+        model = ImageRequest.Builder(LocalContext.current)
+          .data("https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/19/largeicon.png")
+          .crossfade(true)
+          .build(),
+        contentDescription = null,
+        modifier = Modifier
+          .aspectRatio(1.0f)
+          .weight(1f),
+      )
+
+      Spacer(modifier = Modifier.height(2.dp))
+
+      Text(
+        text = "-16",
+        fontSize = 12.sp,
+        color = LocalZeroColors.current.loserEmphasis,
+        modifier = Modifier,
+      )
+    }
 
     Spacer(modifier = Modifier.width(16.dp))
 
     Column(
       horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+      Text(
+        text = "15 / 10 / 3",
+        fontSize = 16.sp,
+      )
+
+      Spacer(modifier = Modifier.height(4.dp))
+
+      Row {
+        Box(
+          modifier = Modifier
+            .clip(RoundedCornerShape(4.dp))
+            .background(ZeroColorTokens.objectHighEmphasis)
+            .padding(
+              vertical = 2.dp,
+              horizontal = 4.dp,
+            )
+        ) {
+          Text(
+            text = "7th",
+            color = ZeroColorTokens.white,
+            fontSize = 12.sp,
+          )
+        }
+
+        Spacer(modifier = Modifier.width(8.dp))
+
+        Text(
+          text = "2136",
+          fontSize = 14.sp,
+        )
+      }
+    }
+
+    Spacer(
+      modifier = Modifier
+        .fillMaxWidth()
+        .weight(1f)
+    )
+
+    Column(
+      horizontalAlignment = Alignment.CenterHorizontally,
+      modifier = Modifier
     ) {
       Text(
         text = "VICTORY",
@@ -349,11 +412,9 @@ private fun MatchResultItem() {
         fontSize = 16.sp,
         textAlign = TextAlign.Center,
       )
-
-      Spacer(modifier = Modifier.height(32.dp))
-
-
     }
+
+    Spacer(modifier = Modifier.width(16.dp))
   }
 }
 

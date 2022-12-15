@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.data.kernel.domain
+package black.bracken.zeropoint.data.kernel.model
 
 @JvmInline
 value class PlayerId(val value: String) {

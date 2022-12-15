@@ -1,8 +1,8 @@
 package black.bracken.zeropoint.data.kernel.repo.fake
 
-import black.bracken.zeropoint.data.kernel.domain.Account
-import black.bracken.zeropoint.data.kernel.domain.PlayerId
-import black.bracken.zeropoint.data.kernel.domain.fake
+import black.bracken.zeropoint.data.kernel.model.Account
+import black.bracken.zeropoint.data.kernel.model.PlayerId
+import black.bracken.zeropoint.data.kernel.model.fake
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import kotlinx.coroutines.delay
 

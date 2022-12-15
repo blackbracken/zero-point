@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.data.kernel.domain.error
+package black.bracken.zeropoint.data.kernel.model.error
 
 sealed class ValorantApiException(
   override val message: String? = null
