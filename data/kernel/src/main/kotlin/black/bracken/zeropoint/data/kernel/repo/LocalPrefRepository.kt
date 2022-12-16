@@ -17,5 +17,4 @@ interface LocalPrefRepository {
   fun getChosenApiDataSource(): ChosenApiDataSource
 
   suspend fun setChosenApiDataSource(chosenApiDataSource: ChosenApiDataSource)
-
 }

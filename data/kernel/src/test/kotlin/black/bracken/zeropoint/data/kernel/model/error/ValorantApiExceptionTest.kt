@@ -19,5 +19,4 @@ class ValorantApiExceptionTest {
 
     actual.shouldBeInstanceOf<ValorantApiException.Unknown>()
   }
-
 }

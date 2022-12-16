@@ -14,7 +14,6 @@ class UiStateScenario<out S : Any, L : S> private constructor(
     fun <S : Any> beginsWith(initialState: S): UiStateScenario<S, S> =
       UiStateScenario(listOf(initialState))
   }
-
 }
 
 fun <S : Any> List<S>.shouldFollowUiStateScenario(

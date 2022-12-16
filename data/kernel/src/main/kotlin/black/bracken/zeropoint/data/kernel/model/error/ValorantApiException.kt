@@ -25,5 +25,4 @@ sealed class ValorantApiException(
         else -> Unknown()
       }
   }
-
 }

@@ -22,5 +22,4 @@ class MainActivityTest {
     switchStartDestination(ChosenApiDataSource.REMOTE).shouldBe(HomeDirection.Root.destination)
     switchStartDestination(ChosenApiDataSource.FAKE).shouldBe(HomeDirection.Root.destination)
   }
-
 }

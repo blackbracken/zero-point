@@ -20,6 +20,4 @@ object FakeLocalPrefRepository : LocalPrefRepository {
   override fun getChosenApiDataSource(): ChosenApiDataSource = ChosenApiDataSource.FAKE
 
   override suspend fun setChosenApiDataSource(chosenApiDataSource: ChosenApiDataSource) = Unit
-
-
 }

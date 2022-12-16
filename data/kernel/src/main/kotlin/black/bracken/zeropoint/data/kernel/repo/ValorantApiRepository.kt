@@ -17,5 +17,4 @@ interface ValorantApiRepository {
    * @exception SerializationException
    */
   suspend fun getAccount(playerId: PlayerId): Result<Account>
-
 }

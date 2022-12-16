@@ -19,5 +19,4 @@ class RegionTest {
       Region.from("not-exists-region")
     }
   }
-
 }
