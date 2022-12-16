@@ -36,11 +36,6 @@ gradlePlugin {
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.AndroidHiltPlugin"
     }
 
-    register("detekt") {
-      id = "zeropoint.primitive.detekt"
-      implementationClass = "black.bracken.zeropoint.buildlogic.primitive.DetektPlugin"
-    }
-
     register("test") {
       id = "zeropoint.primitive.test"
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.TestPlugin"
