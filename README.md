@@ -22,24 +22,24 @@ The purpose of this repository is to demonstrate below:
 - Design and architecture
   - multi-module
   - Clean Architecture
+- KotlinX
+  - Coroutines
+  - Serialization
+  - Datetime
 - Testing
   - JUnit 5
   - kotest-assertion
   - mockk
 - Ktor Client
 - Coil
-- KotlinX
-  - Coroutines
-  - Serialization
-  - Datetime
 
 # Environment
 
 Android Studio Flamingo 2022.2.1 Canary 9
 
-# Architecture
+# Design and architecture
 
-## Module dependencies
+## Modularization
 
 Nodes with red outer borders mean modules that depend only on the JVM,
 and nodes with green outer borders mean modules that depend on Android.
@@ -112,6 +112,11 @@ graph TD;
 
 - `./gradlew addKtlintFormatGitPreCommitHook` (ktlint-gradle)
 
+# Credit
+- All Valorant image resources are copyrighted by Riot Games.
+- [Line Drawer (cre8tiveAI)](https://ja.cre8tiveai.com/lid)
+- [Valorant font](https://www.dafont.com/valorant.font)
+
 # License
 
 MIT license. But for code that has a separate license at the top of file, please follow it.
@@ -125,8 +130,3 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
-
-# Credit
-
-- [Line Drawer (cre8tiveAI)](https://ja.cre8tiveai.com/lid)
-- [Valorant font](https://www.dafont.com/valorant.font)
