@@ -1,5 +1,7 @@
 plugins {
   kotlin("jvm")
+
+  id("zeropoint.conventional.kotlinx")
 }
 
 dependencies {

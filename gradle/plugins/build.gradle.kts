@@ -16,6 +16,13 @@ dependencies {
 
 gradlePlugin {
   plugins {
+    // conventional
+    register("kotlinx") {
+      id = "zeropoint.conventional.kotlinx"
+      implementationClass = "black.bracken.zeropoint.buildlogic.conventional.KotlinxPlugin"
+    }
+
+    // primitive
     register("androidApplication") {
       id = "zeropoint.primitive.androidApplication"
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.AndroidApplicationPlugin"

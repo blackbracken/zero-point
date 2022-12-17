@@ -6,6 +6,7 @@ plugins {
   id("zeropoint.primitive.android.compose")
   id("zeropoint.primitive.test")
   id("zeropoint.primitive.test.android")
+  id("zeropoint.conventional.kotlinx")
 }
 
 android.namespace = "black.bracken.zeropoint.feature.setup"

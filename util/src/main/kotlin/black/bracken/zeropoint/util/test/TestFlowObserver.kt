@@ -1,5 +1,7 @@
 package black.bracken.zeropoint.util.test
 
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
@@ -27,9 +29,9 @@ class TestFlowObserver<T>(
     return this
   }
 
-  fun cancelAndCollectAll(): List<T> {
+  fun cancelAndCollectAll(): ImmutableList<T> {
     job.cancel()
 
-    return values
+    return values.toImmutableList()
   }
 }
