@@ -108,11 +108,28 @@ graph TD;
 
 - `:feature:xxx`: These are modules with actual UI based on the feature modules included in [the general pattern](https://developer.android.com/topic/modularization/patterns) for Android development. in ZeroPoint, modules are separated by navigation graph units.
 
+## Robust error handling
+
+The most common way to tell the caller that an error has occurred is to express it as a value and return it in Kotlin.
+Kotlin employs unchecked exceptions, and exceptions can miss domain-specific errors that should be addressed.
+The most commonly used is nullable, but that removes all context from the error and may not allow for proper handling of errors that occur.
+The same is true for `Result<T>` in the Kotlin standard library. As mentioned in [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/stdlib/result.md#error-handling-style-and-exceptions) about this, we do not want to use domain-specific errors in Result.
+So, we will use `Result<V, E>` in `kittinunf/Result`. However, since `Result<V, E>` is a type that is used everywhere from the domain model layer to the infrastructure layer, and yet can be implemented with a simple definition, we think it is fine to provide it internally depending on the size of the application.
+Also, since we do not want to use the IDE to have the same name as the standard Kotlin Result, we will use an alias like `typealias Either<L, R> = Result<R, L>`.
+
+Now, let's consider the repositories that will actually return the most errors.
+In many cases, the same repository will return similar errors. So when you define a repository, you define its interface and the SEALED interface of the error.
+Of course, if necessary, the error types may be separated by endpoint or by process.
+
+However, we would like to make common errors that can occur in multiple repositories (and since ZeroPoint is not a large application, such will be the case in most cases).
+So, we will implement such errors independently and delegate them to be used in the repositories.
+
 # Set up
 
 - `./gradlew addKtlintFormatGitPreCommitHook` (ktlint-gradle)
 
 # Credit
+
 - All Valorant image resources are copyrighted by Riot Games.
 - [Line Drawer (cre8tiveAI)](https://ja.cre8tiveai.com/lid)
 - [Valorant font](https://www.dafont.com/valorant.font)
