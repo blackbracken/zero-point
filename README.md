@@ -110,19 +110,19 @@ graph TD;
 
 ## Robust error handling
 
-The most common way to tell the caller that an error has occurred is to express it as a value and return it in Kotlin.
-Kotlin employs unchecked exceptions, and exceptions can miss domain-specific errors that should be addressed.
-The most commonly used is nullable, but that removes all context from the error and may not allow for proper handling of errors that occur.
-The same is true for `Result<T>` in the Kotlin standard library. As mentioned in [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/stdlib/result.md#error-handling-style-and-exceptions) about this, we do not want to use domain-specific errors in Result.
-So, we will use `Result<V, E>` in `kittinunf/Result`. However, since `Result<V, E>` is a type that is used everywhere from the domain model layer to the infrastructure layer, and yet can be implemented with a simple definition, we think it is fine to provide it internally depending on the size of the application.
-Also, since we do not want to use the IDE to have the same name as the standard Kotlin Result, we will use an alias like `typealias Either<L, R> = Result<R, L>`.
+To tell the caller that an error has occurred, Kotlin commonly expresses it as a value and returns it.
+Kotlin employs unchecked exceptions, which can miss domain-specific errors that should be addressed.
+The most commonly used exception is nullable, but that removes all context from the error and may not allow for proper handling of errors that do occur.
+The same is true for `Result<T>` in the Kotlin standard library. As mentioned in [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/stdlib/result.md#error-handling-style-and-exceptions), we do not want to use domain-specific errors in Result.
+
+So here we use `Result<V, E>` from `kittinunf/Result`. However, since Result is a type that is used everywhere from the domain model layer to the infrastructure layer and can be implemented with a simple definition, we think it is acceptable to prepare it internally depending on the scale of the application.
+Also, we don't want the name of the type to be the same as the standard Result in Kotlin, so we will use an alias like `typealias Either<L, R> = Result<R, L>`.
 
 Now, let's consider the repositories that will actually return the most errors.
-In many cases, the same repository will return similar errors. So when you define a repository, you define its interface and the SEALED interface of the error.
+In many cases, the same repository will return similar errors. So when you define a repository, you define its interface and the sealed interface of the error.
 Of course, if necessary, the error types may be separated by endpoint or by process.
 
-However, we would like to make common errors that can occur in multiple repositories (and since ZeroPoint is not a large application, such will be the case in most cases).
-So, we will implement such errors independently and delegate them to be used in the repositories.
+However, we would like to make common errors that can occur even in multiple repositories (and since ZeroPoint is a small application, such will be the case in most cases). So such errors can be implemented independently and have them as per-repository error parameters.
 
 # Set up
 
