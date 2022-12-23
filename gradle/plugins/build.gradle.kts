@@ -16,12 +16,6 @@ dependencies {
 
 gradlePlugin {
   plugins {
-    // conventional
-    register("kotlinx") {
-      id = "zeropoint.conventional.kotlinx"
-      implementationClass = "black.bracken.zeropoint.buildlogic.conventional.KotlinxPlugin"
-    }
-
     // primitive
     register("androidApplication") {
       id = "zeropoint.primitive.androidApplication"
@@ -42,6 +36,12 @@ gradlePlugin {
       id = "zeropoint.primitive.android.hilt"
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.AndroidHiltPlugin"
     }
+
+    register("kotlinEnvironment") {
+      id = "zeropoint.primitive.kotlinEnvironment"
+      implementationClass = "black.bracken.zeropoint.buildlogic.primitive.KotlinEnvironmentPlugin"
+    }
+
 
     register("test") {
       id = "zeropoint.primitive.test"

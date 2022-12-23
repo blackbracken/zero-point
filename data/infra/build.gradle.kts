@@ -1,6 +1,6 @@
 plugins {
   id("zeropoint.primitive.androidLibrary")
-  id("zeropoint.conventional.kotlinx")
+  id("zeropoint.primitive.kotlinEnvironment")
 }
 
 android.namespace = "black.bracken.zeropoint.data.infra"

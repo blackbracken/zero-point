@@ -1,4 +1,4 @@
-package black.bracken.zeropoint.buildlogic.conventional
+package black.bracken.zeropoint.buildlogic.primitive
 
 import black.bracken.zeropoint.buildlogic.dsl.implementation
 import black.bracken.zeropoint.buildlogic.dsl.libs
@@ -7,7 +7,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
-class KotlinxPlugin : Plugin<Project> {
+class KotlinEnvironmentPlugin : Plugin<Project> {
   override fun apply(target: Project) {
     with(target) {
       with(pluginManager) {
@@ -20,6 +20,8 @@ class KotlinxPlugin : Plugin<Project> {
           implementation(libs.findLibrary("kotlinxCollectionsImmutable"))
           implementation(libs.findLibrary("kotlinxSerializationJson"))
           implementation(libs.findLibrary("kotlinxDatetime"))
+
+          implementation(libs.findLibrary("resultJvm"))
 
           testImplementation(libs.findLibrary("kotlinxCoroutines"))
           testImplementation(libs.findLibrary("kotlinxCoroutinesTest"))
