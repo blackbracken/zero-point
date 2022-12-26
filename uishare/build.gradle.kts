@@ -1,10 +1,9 @@
-import black.bracken.zeropoint.buildlogic.dsl.implementation
 import black.bracken.zeropoint.buildlogic.dsl.libs
 
 plugins {
   id("zeropoint.primitive.androidLibrary")
   id("zeropoint.primitive.android.compose")
-  id("zeropoint.conventional.kotlinx")
+  id("zeropoint.primitive.kotlinEnvironment")
 }
 
 android.namespace = "black.bracken.zeropoint.uishare"

@@ -4,19 +4,19 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 import kotlin.test.Test
 
-class ValorantApiExceptionTest {
+class ValorantApiErrorTest {
 
   @Test
   fun fromStatusCode_returnsNotFound_given404() {
-    val actual = ValorantApiException.fromStatusCode(404)
+    val actual = ValorantApiError.fromStatusCode(404)
 
-    actual.shouldBe(ValorantApiException.NotFound)
+    actual.shouldBe(ValorantApiError.NotFound)
   }
 
   @Test
   fun fromStatusCode_returnsUnknown_given0() {
-    val actual = ValorantApiException.fromStatusCode(0)
+    val actual = ValorantApiError.fromStatusCode(0)
 
-    actual.shouldBeInstanceOf<ValorantApiException.Unknown>()
+    actual.shouldBeInstanceOf<ValorantApiError.Unknown>()
   }
 }

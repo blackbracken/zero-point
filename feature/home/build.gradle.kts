@@ -1,10 +1,9 @@
-import black.bracken.zeropoint.buildlogic.dsl.implementation
-
 plugins {
   id("zeropoint.primitive.androidLibrary")
   id("zeropoint.primitive.android.compose")
   id("zeropoint.primitive.test")
   id("zeropoint.primitive.test.android")
+  id("zeropoint.primitive.kotlinEnvironment")
 }
 
 android.namespace = "black.bracken.zeropoint.feature.home"

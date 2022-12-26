@@ -21,7 +21,8 @@ class KotlinEnvironmentPlugin : Plugin<Project> {
           implementation(libs.findLibrary("kotlinxSerializationJson"))
           implementation(libs.findLibrary("kotlinxDatetime"))
 
-          implementation(libs.findLibrary("resultJvm"))
+          implementation(libs.findLibrary("result"))
+          implementation(libs.findLibrary("resultCoroutines"))
 
           testImplementation(libs.findLibrary("kotlinxCoroutines"))
           testImplementation(libs.findLibrary("kotlinxCoroutinesTest"))

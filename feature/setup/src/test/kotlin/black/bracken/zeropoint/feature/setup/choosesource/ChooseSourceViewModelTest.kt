@@ -1,7 +1,7 @@
 package black.bracken.zeropoint.feature.setup.choosesource
 
 import black.bracken.zeropoint.data.kernel.model.Account
-import black.bracken.zeropoint.data.kernel.model.error.ValorantApiException
+import black.bracken.zeropoint.data.kernel.model.error.ValorantApiError
 import black.bracken.zeropoint.data.kernel.model.fake
 import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
@@ -100,7 +100,7 @@ class ChooseSourceViewModelTest {
       ChooseSourceUiState.Initial.copy(shouldOpenInputPlayerNameModal = true)
     )
 
-    val exception = ValorantApiException.Unknown()
+    val exception = ValorantApiError.Unknown()
     coEvery { mockValorantApiRepository.getAccount(any(), any()) } returns Result.failure(exception)
 
     viewModel.onConfirmPlayerName()

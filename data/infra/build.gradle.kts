@@ -7,6 +7,7 @@ android.namespace = "black.bracken.zeropoint.data.infra"
 
 dependencies {
   implementation(project(":data:kernel"))
+  implementation(project(":util"))
 
   implementation(libs.androidxDataStore)
 

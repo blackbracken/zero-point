@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import black.bracken.zeropoint.data.kernel.model.ChosenApiDataSource
 import black.bracken.zeropoint.data.kernel.model.PlayerId
-import black.bracken.zeropoint.data.kernel.model.error.ValorantApiException
+import black.bracken.zeropoint.data.kernel.model.error.ValorantApiError
 import black.bracken.zeropoint.data.kernel.repo.LocalPrefRepository
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import black.bracken.zeropoint.uishare.ext.errorMessageResource
@@ -51,6 +51,11 @@ class ChooseSourceViewModel @Inject constructor(
     viewModelScope.launch {
       _uiState.emit(snapshot.copy(isLoadingOnModal = true))
 
+      val accountOrError = valorantApiRepository.getAccount(
+        snapshot.riotId,
+        snapshot.tagline,
+      )
+
       valorantApiRepository.getAccount(
         snapshot.riotId,
         snapshot.tagline,
@@ -71,7 +76,7 @@ class ChooseSourceViewModel @Inject constructor(
               isLoadingOnModal = false,
               errorTextOnModal = when (throwable) {
                 is SerializationException -> StringResource(ResR.string.error_serialization)
-                is ValorantApiException -> throwable.errorMessageResource
+                is ValorantApiError -> throwable.errorMessageResource
                 else -> StringResource(ResR.string.error_unknown, throwable.message.toString())
               }
             )
