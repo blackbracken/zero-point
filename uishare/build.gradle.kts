@@ -13,5 +13,5 @@ dependencies {
   api(project(":resource"))
   api(project(":util"))
 
-  implementation(libs.findLibrary("androidxComposeMaterial"))
+  implementation(libs.findLibrary("androidxComposeMaterial").get())
 }
