@@ -22,10 +22,14 @@ object ValorantApiRepositoryModule {
     localPrefRepository: LocalPrefRepository,
     unofficialValorantApiDataSource: UnofficialValorantApiDataSource,
   ): ValorantApiRepository {
-    return if (localPrefRepository.getChosenApiDataSource() == ChosenApiDataSource.REMOTE) {
-      RemoteValorantApiRepository(unofficialValorantApiDataSource)
-    } else {
-      FakeValorantApiRepository
+    return when (localPrefRepository.getChosenApiDataSource()) {
+      ChosenApiDataSource.UNSET, ChosenApiDataSource.REMOTE -> {
+        RemoteValorantApiRepository(unofficialValorantApiDataSource)
+      }
+
+      ChosenApiDataSource.FAKE -> {
+        FakeValorantApiRepository
+      }
     }
   }
 
