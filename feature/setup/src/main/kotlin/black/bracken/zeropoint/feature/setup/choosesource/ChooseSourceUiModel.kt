@@ -7,10 +7,13 @@ sealed interface ChooseSourceUiState {
   data class Choose(
     val shouldOpenInputPlayerNameModal: Boolean = false,
     val isLoadingOnModal: Boolean = false,
+    val inTransaction: Boolean = false,
     val errorTextOnModal: StringResource? = null,
     val riotId: String = "",
     val tagline: String = "",
-  ) : ChooseSourceUiState
+  ) : ChooseSourceUiState {
+    val canInteract = !isLoadingOnModal && !inTransaction
+  }
 
   object RestartApp : ChooseSourceUiState
 

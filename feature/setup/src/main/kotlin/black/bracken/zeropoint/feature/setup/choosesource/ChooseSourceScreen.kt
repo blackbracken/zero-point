@@ -115,7 +115,7 @@ private fun ChooseSourceChooseContent(
   val focusManager = LocalFocusManager.current
 
   // ModalBottomSheetState を再生成せずに [uiState.isLoadingOnModal] を取得する
-  val shouldCloseModalOnTapOutside by rememberUpdatedState(!uiState.isLoadingOnModal)
+  val shouldCloseModalOnTapOutside by rememberUpdatedState(uiState.canInteract)
   val sheetState = rememberModalBottomSheetState(
     initialValue = ModalBottomSheetValue.Hidden,
     confirmStateChange = { shouldCloseModalOnTapOutside }
@@ -152,7 +152,7 @@ private fun ChooseSourceChooseContent(
         InputPlayerNameModalBottomSheetContent(
           riotId = uiState.riotId,
           tagline = uiState.tagline,
-          isLoadingOnModal = uiState.isLoadingOnModal,
+          canInteract = uiState.canInteract,
           errorText = uiState.errorTextOnModal?.getString(context),
           onChangeRiotId = uiAction.onChangeRiotId,
           onChangeTagline = uiAction.onChangeTagline,
@@ -170,7 +170,7 @@ private fun ChooseSourceChooseContent(
       modifier = Modifier.fillMaxSize(),
     ) {
       ChooseSourceContent(
-        isLoadingOnModal = uiState.isLoadingOnModal,
+        canInteract = uiState.canInteract,
         onChooseRemoteSource = uiAction.onChooseRemoteSource,
         onChooseFakeSource = uiAction.onChooseFakeSource,
       )
@@ -203,7 +203,7 @@ private fun ChooseSourceBackground(
 
 @Composable
 private fun ChooseSourceContent(
-  isLoadingOnModal: Boolean,
+  canInteract: Boolean,
   onChooseRemoteSource: () -> Unit,
   onChooseFakeSource: () -> Unit,
 ) {
@@ -263,7 +263,7 @@ private fun ChooseSourceContent(
       ) {
         Button(
           onClick = onChooseRemoteSource,
-          enabled = !isLoadingOnModal,
+          enabled = canInteract,
           modifier = Modifier.fillMaxWidth(),
         ) {
           Text(
@@ -276,7 +276,7 @@ private fun ChooseSourceContent(
 
         Button(
           onClick = onChooseFakeSource,
-          enabled = !isLoadingOnModal,
+          enabled = canInteract,
           modifier = Modifier.fillMaxWidth(),
         ) {
           Text(
@@ -296,7 +296,7 @@ private fun ChooseSourceContent(
 private fun InputPlayerNameModalBottomSheetContent(
   riotId: String,
   tagline: String,
-  isLoadingOnModal: Boolean,
+  canInteract: Boolean,
   errorText: String?,
   onChangeRiotId: (String) -> Unit,
   onChangeTagline: (String) -> Unit,
@@ -328,7 +328,7 @@ private fun InputPlayerNameModalBottomSheetContent(
     ) {
       OutlinedTextField(
         value = riotId,
-        enabled = !isLoadingOnModal,
+        enabled = canInteract,
         label = {
           Text(
             text = stringResource(ResR.string.choose_source_modal_riot_id_label),
@@ -351,7 +351,7 @@ private fun InputPlayerNameModalBottomSheetContent(
 
       OutlinedTextField(
         value = tagline,
-        enabled = !isLoadingOnModal,
+        enabled = canInteract,
         label = {
           Text(
             text = stringResource(ResR.string.choose_source_modal_tagline_label),
@@ -383,7 +383,7 @@ private fun InputPlayerNameModalBottomSheetContent(
       enabled = riotId.isNotEmpty()
         && tagline.isNotEmpty()
         && tagline.length <= 5
-        && !isLoadingOnModal,
+        && canInteract,
       modifier = Modifier.align(Alignment.End),
     ) {
       Text(
