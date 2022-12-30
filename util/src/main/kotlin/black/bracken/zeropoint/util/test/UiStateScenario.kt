@@ -7,7 +7,7 @@ class UiStateScenario<out S : Any, L : S> private constructor(
 ) {
 
   @Suppress("UNCHECKED_CAST")
-  fun <N : L> then(makeNewState: (lastState: L) -> N): UiStateScenario<S, N> =
+  fun <N : L> then(makeNewState: L.() -> N): UiStateScenario<S, N> =
     UiStateScenario(history + makeNewState(history.last() as L))
 
   companion object {

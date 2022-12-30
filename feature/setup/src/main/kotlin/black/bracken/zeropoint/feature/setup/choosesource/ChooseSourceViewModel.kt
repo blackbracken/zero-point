@@ -1,5 +1,6 @@
 package black.bracken.zeropoint.feature.setup.choosesource
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import black.bracken.zeropoint.data.kernel.model.ChosenApiDataSource
@@ -36,7 +37,8 @@ class ChooseSourceViewModel @Inject constructor(
 
   private val txMutex: TxMutex = TxMutex()
 
-  private val _uiState = MutableStateFlow<ChooseSourceUiState>(ChooseSourceUiState.Initial)
+  @VisibleForTesting
+  val _uiState = MutableStateFlow<ChooseSourceUiState>(ChooseSourceUiState.Initial)
   val uiState by lazy {
     _uiState.createUiState(
       scope = viewModelScope,
@@ -121,7 +123,10 @@ class ChooseSourceViewModel @Inject constructor(
       update { update(uiState) }
     }
 
-    private fun MutableStateFlow<ChooseSourceUiState>.createUiState(
+    fun f() {}
+
+    @VisibleForTesting
+    fun MutableStateFlow<ChooseSourceUiState>.createUiState(
       scope: CoroutineScope,
       inTransactionFlow: Flow<Boolean>,
     ): StateFlow<ChooseSourceUiState> {
