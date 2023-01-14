@@ -115,14 +115,14 @@ Kotlin employs unchecked exceptions, which can miss domain-specific errors that 
 The most commonly used exception is nullable, but that removes all context from the error and may not allow for proper handling of errors that do occur.
 The same is true for `Result<T>` in the Kotlin standard library. As mentioned in [KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/stdlib/result.md#error-handling-style-and-exceptions), we do not want to use domain-specific errors in Result.
 
-So here we use `Result<V, E>` from `kittinunf/Result`. However, since Result is a type that is used everywhere from the domain model layer to the infrastructure layer and can be implemented with a simple definition, we think it is acceptable to prepare it internally depending on the scale of the application.
-Also, we don't want the name of the type to be the same as the standard Result in Kotlin, so we will use an alias like `typealias Either<L, R> = Result<R, L>`.
+So here we use `Result<V, E>` from `michaelbull/kotlin-result`. However, since Result is a type that is used everywhere from the domain model layer to the infrastructure layer and can be implemented with a simple definition, we think it is acceptable to prepare it internally depending on the scale of the application.
+Also, we don't want the name of the type to be the same as the standard Result in Kotlin, so we will use an alias like `typealias Res<V, E> = Result<V, E>`.
 
 Now, let's consider the repositories that will actually return the most errors.
 In many cases, the same repository will return similar errors. So when you define a repository, you define its interface and the sealed interface of the error.
-Of course, if necessary, the error types may be separated by endpoint or by process.
+Of course, if necessary, the error types may be separated by endpoint or by process. However, we would like to make common errors that can occur even in multiple repositories (and since ZeroPoint is a small application, such will be the case in most cases). So such errors can be implemented independently and have them as per-repository error parameters.
 
-However, we would like to make common errors that can occur even in multiple repositories (and since ZeroPoint is a small application, such will be the case in most cases). So such errors can be implemented independently and have them as per-repository error parameters.
+In addition, when writing logic that returns a `Result`, use `binding` (a pseudo-function of monad comprehension limited to only `Result` in multiple languages) defined in `kotlin-result` to write Railway Oriented Programming style.
 
 # Set up
 
