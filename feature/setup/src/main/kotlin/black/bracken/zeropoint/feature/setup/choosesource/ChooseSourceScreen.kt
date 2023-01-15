@@ -115,7 +115,7 @@ private fun ChooseSourceChooseContent(
   val focusManager = LocalFocusManager.current
 
   // ModalBottomSheetState を再生成せずに [uiState.isLoadingOnModal] を取得する
-  val shouldCloseModalOnTapOutside by rememberUpdatedState(uiState.canInteract)
+  val shouldCloseModalOnTapOutside by rememberUpdatedState(!uiState.inTransaction)
   val sheetState = rememberModalBottomSheetState(
     initialValue = ModalBottomSheetValue.Hidden,
     confirmStateChange = { shouldCloseModalOnTapOutside }
@@ -148,11 +148,11 @@ private fun ChooseSourceChooseContent(
   ModalBottomSheetLayout(
     sheetState = sheetState,
     sheetContent = {
-      LoadIndicatorCover(isLoading = uiState.isLoadingOnModal) {
+      LoadIndicatorCover(isLoading = uiState.inTransaction) {
         InputPlayerNameModalBottomSheetContent(
           riotId = uiState.riotId,
           tagline = uiState.tagline,
-          canInteract = uiState.canInteract,
+          canInteract = !uiState.inTransaction,
           errorText = uiState.errorTextOnModal?.getString(context),
           onChangeRiotId = uiAction.onChangeRiotId,
           onChangeTagline = uiAction.onChangeTagline,
@@ -170,7 +170,7 @@ private fun ChooseSourceChooseContent(
       modifier = Modifier.fillMaxSize(),
     ) {
       ChooseSourceContent(
-        canInteract = uiState.canInteract,
+        canInteract = !uiState.inTransaction,
         onChooseRemoteSource = uiAction.onChooseRemoteSource,
         onChooseFakeSource = uiAction.onChooseFakeSource,
       )

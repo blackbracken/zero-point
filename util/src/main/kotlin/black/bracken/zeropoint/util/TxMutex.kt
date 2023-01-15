@@ -34,7 +34,6 @@ class TxMutex {
       }
     }
   }
-
 }
 
 fun TxMutex.withLockOn(scope: CoroutineScope, action: suspend () -> Unit) {

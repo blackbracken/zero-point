@@ -42,7 +42,6 @@ gradlePlugin {
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.KotlinEnvironmentPlugin"
     }
 
-
     register("test") {
       id = "zeropoint.primitive.test"
       implementationClass = "black.bracken.zeropoint.buildlogic.primitive.TestPlugin"

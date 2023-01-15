@@ -19,5 +19,4 @@ object FakeValorantApiRepository : ValorantApiRepository {
     delay(4000L)
     return Ok(Account.fake())
   }
-
 }

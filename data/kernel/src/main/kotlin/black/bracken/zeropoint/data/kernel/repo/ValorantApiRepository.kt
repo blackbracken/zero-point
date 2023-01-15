@@ -15,5 +15,4 @@ interface ValorantApiRepository {
     object SerializationError : Error
     data class ApiError(val error: ValorantApiError) : Error
   }
-
 }

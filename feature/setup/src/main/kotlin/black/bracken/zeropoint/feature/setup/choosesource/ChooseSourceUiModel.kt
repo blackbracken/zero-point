@@ -5,15 +5,13 @@ import black.bracken.zeropoint.uishare.util.StringResource
 sealed interface ChooseSourceUiState {
 
   data class Choose(
-    val shouldOpenInputPlayerNameModal: Boolean = false,
-    val isLoadingOnModal: Boolean = false,
     val inTransaction: Boolean = false,
+    // TODO: separate below states as ModalUiState
+    val shouldOpenInputPlayerNameModal: Boolean = false,
     val errorTextOnModal: StringResource? = null,
     val riotId: String = "",
     val tagline: String = "",
-  ) : ChooseSourceUiState {
-    val canInteract = !isLoadingOnModal && !inTransaction
-  }
+  ) : ChooseSourceUiState
 
   object RestartApp : ChooseSourceUiState
 
@@ -21,7 +19,6 @@ sealed interface ChooseSourceUiState {
     val Initial: Choose = Choose(
       shouldOpenInputPlayerNameModal = false,
       errorTextOnModal = null,
-      isLoadingOnModal = false,
     )
   }
 
