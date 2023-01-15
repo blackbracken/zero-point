@@ -15,9 +15,9 @@ import com.github.michaelbull.result.Ok
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.test.runCurrent
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.yield
 import org.junit.Rule
 import kotlin.test.Test
 
@@ -36,26 +36,13 @@ class ChooseSourceViewModelTest {
   )
 
   @Test
-  fun createUiState_success() = runTest {
-    with(ChooseSourceViewModel.Companion) {
-
-      val uiState = MutableStateFlow(ChooseSourceUiState.Initial)
-
-      f()
-      this.f()
-
-      this.createUiState()
-    }
-  }
-
-  @Test
   fun onChangeRiotId_success_changeUiState() = runTest {
     val uiStateObserver = TestFlowObserver(this, testScheduler, viewModel.uiState).start()
 
     val riotId = "riotId"
     viewModel.onChangeRiotId(riotId)
 
-    runCurrent()
+    advanceUntilIdle()
 
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
       UiStateScenario
@@ -71,7 +58,7 @@ class ChooseSourceViewModelTest {
     val tagline = "TAG"
     viewModel.onChangeTagline(tagline)
 
-    runCurrent()
+    advanceUntilIdle()
 
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
       UiStateScenario
@@ -84,56 +71,66 @@ class ChooseSourceViewModelTest {
   fun onConfirmPlayerName_successGetAccount_changeUiState() = runTest {
     val uiStateObserver = TestFlowObserver(this, testScheduler, viewModel.uiState).start()
 
-    viewModel._uiState.emit(
+    viewModel.rawUiState.emit(
       ChooseSourceUiState.Initial.copy(shouldOpenInputPlayerNameModal = true)
     )
+    advanceUntilIdle()
 
     val account = Account.fake()
-    coEvery { mockValorantApiRepository.getAccount(any(), any()) } returns Ok(account)
+    coEvery { mockValorantApiRepository.getAccount(any(), any()) } coAnswers {
+      yield()
+      Ok(account)
+    }
 
     viewModel.onConfirmPlayerName()
-    runCurrent()
+    advanceUntilIdle()
 
-    uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
-      UiStateScenario
-        .beginsWith(ChooseSourceUiState.Initial)
-        .then { copy(shouldOpenInputPlayerNameModal = true) }
-        .then { copy(isLoadingOnModal = true) }
-        .then {
-          copy(
-            isLoadingOnModal = false,
-            errorTextOnModal = null,
-          )
-        }
-    )
+    uiStateObserver.cancelAndCollectAll()
+      .shouldFollowUiStateScenario(
+        UiStateScenario
+          .beginsWith(ChooseSourceUiState.Initial)
+          .then { copy(shouldOpenInputPlayerNameModal = true) }
+          .then { copy(inTransaction = true) }
+          .then {
+            copy(
+              inTransaction = false,
+              errorTextOnModal = null,
+            )
+          }
+      )
   }
 
   @Test
   fun onConfirmPlayerName_failureGetAccount_changeUiState() = runTest {
     val uiStateObserver = TestFlowObserver(this, testScheduler, viewModel.uiState).start()
 
-    viewModel._uiState.emit(
+    viewModel.rawUiState.emit(
       ChooseSourceUiState.Initial.copy(shouldOpenInputPlayerNameModal = true)
     )
+    advanceUntilIdle()
 
     val error = ValorantApiRepository.Error.ApiError(ValorantApiError.fromStatusCode(404))
-    coEvery { mockValorantApiRepository.getAccount(any(), any()) } returns Err(error)
+    coEvery { mockValorantApiRepository.getAccount(any(), any()) } coAnswers {
+      yield()
+      Err(error)
+    }
 
     viewModel.onConfirmPlayerName()
-    runCurrent()
+    advanceUntilIdle()
 
-    uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
-      UiStateScenario
-        .beginsWith(ChooseSourceUiState.Initial)
-        .then { copy(shouldOpenInputPlayerNameModal = true) }
-        .then { copy(isLoadingOnModal = true) }
-        .then {
-          copy(
-            isLoadingOnModal = false,
-            errorTextOnModal = error.error.errorMessageResource,
-          )
-        }
-    )
+    uiStateObserver.cancelAndCollectAll()
+      .shouldFollowUiStateScenario(
+        UiStateScenario
+          .beginsWith(ChooseSourceUiState.Initial)
+          .then { copy(shouldOpenInputPlayerNameModal = true) }
+          .then { copy(inTransaction = true) }
+          .then {
+            copy(
+              inTransaction = false,
+              errorTextOnModal = error.error.errorMessageResource,
+            )
+          }
+      )
   }
 
   @Test
@@ -141,7 +138,7 @@ class ChooseSourceViewModelTest {
     val uiStateObserver = TestFlowObserver(this, testScheduler, viewModel.uiState).start()
 
     viewModel.onClickRemoteButton()
-    runCurrent()
+    advanceUntilIdle()
 
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
       UiStateScenario
@@ -154,12 +151,13 @@ class ChooseSourceViewModelTest {
   fun onCloseBottomSheet_success_changeUiState() = runTest {
     val uiStateObserver = TestFlowObserver(this, testScheduler, viewModel.uiState).start()
 
-    viewModel._uiState.emit(
+    viewModel.rawUiState.emit(
       ChooseSourceUiState.Initial.copy(shouldOpenInputPlayerNameModal = true)
     )
+    advanceUntilIdle()
 
     viewModel.onCloseBottomSheet()
-    runCurrent()
+    advanceUntilIdle()
 
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
       UiStateScenario
@@ -173,12 +171,13 @@ class ChooseSourceViewModelTest {
   fun afterCloseBottomSheet_success_changeUiState() = runTest {
     val uiStateObserver = TestFlowObserver(this, testScheduler, viewModel.uiState).start()
 
-    viewModel._uiState.emit(
+    viewModel.rawUiState.emit(
       ChooseSourceUiState.Initial.copy(shouldOpenInputPlayerNameModal = true)
     )
+    advanceUntilIdle()
 
     viewModel.afterCloseBottomSheet()
-    runCurrent()
+    advanceUntilIdle()
 
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
       UiStateScenario
