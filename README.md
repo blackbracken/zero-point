@@ -5,8 +5,8 @@ A demo app on Android to check Valorant stats.
 The purpose of this repository is to demonstrate below:
 
 - A mini app using new and practical libraries and architectures with 100% Compose.
-- Exploring better navigation methods in Compose that do not use unofficial libraries.
 - Use version catalogs and Gradle plugin-based build logic management (independent of buildSrc).
+- Exploring better navigation methods in Compose that do not use unofficial libraries.
 - Try to use unofficial-valorant-api.
 
 # Tech and libraries
@@ -20,8 +20,8 @@ The purpose of this repository is to demonstrate below:
   - ViewModel
 - [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 - Design and architecture
-  - multi-module
-  - Clean Architecture
+  - Multi module
+  - Layered Architecture
 - KotlinX
   - Coroutines
   - Serialization
@@ -122,7 +122,7 @@ Now, let's consider the repositories that will actually return the most errors.
 In many cases, the same repository will return similar errors. So when you define a repository, you define its interface and the sealed interface of the error.
 Of course, if necessary, the error types may be separated by endpoint or by process. However, we would like to make common errors that can occur even in multiple repositories (and since ZeroPoint is a small application, such will be the case in most cases). So such errors can be implemented independently and have them as per-repository error parameters.
 
-In addition, when writing logic that returns a `Result`, use `binding` (a pseudo-function of monad comprehension limited to only `Result` in multiple languages) defined in `kotlin-result` to write Railway Oriented Programming style.
+In addition, when writing logic that returns a `Result`, you can use `binding` (a pseudo-function of monad comprehension limited to only `Result` in multiple languages) defined in `kotlin-result` to write Railway Oriented Programming style.
 
 # Set up
 
