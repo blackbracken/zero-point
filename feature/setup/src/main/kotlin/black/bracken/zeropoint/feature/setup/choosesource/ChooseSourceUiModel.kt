@@ -8,23 +8,28 @@ sealed interface ChooseSourceUiState {
     val inTransaction: Boolean = false,
     // TODO: separate below states as ModalUiState
     val shouldOpenInputPlayerNameModal: Boolean = false,
-    val errorTextOnModal: StringResource? = null,
-    val riotId: String = "",
-    val tagline: String = "",
+    val modal: ChooseSourceModalModel = ChooseSourceModalModel(
+      errorText = null,
+      riotId = "",
+      tagline = ""
+    ),
   ) : ChooseSourceUiState
 
   object RestartApp : ChooseSourceUiState
 
   companion object {
-    val Initial: Choose = Choose(
-      shouldOpenInputPlayerNameModal = false,
-      errorTextOnModal = null,
-    )
+    val Initial: Choose = Choose()
   }
 
 }
 
 fun ChooseSourceUiState.Companion.fake() = Initial
+
+data class ChooseSourceModalModel(
+  val errorText: StringResource?,
+  val riotId: String,
+  val tagline: String,
+)
 
 data class ChooseSourceUiAction(
   val navigateToHome: () -> Unit,

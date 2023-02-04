@@ -55,34 +55,36 @@ class ChooseSourceViewModel @Inject constructor(
   }
 
   fun onChangeRiotId(riotId: String) {
-    rawUiState.updateIfChoose { it.copy(riotId = riotId) }
+    rawUiState.updateIfChoose { it.copy(modal = it.modal.copy(riotId = riotId)) }
   }
 
   fun onChangeTagline(tagline: String) {
-    rawUiState.updateIfChoose { it.copy(tagline = tagline) }
+    rawUiState.updateIfChoose { it.copy(modal = it.modal.copy(tagline = tagline)) }
   }
 
   fun onConfirmPlayerName() = txMutex.withLockOn(viewModelScope) {
     val snapshot = rawUiState.valueIfMatchType<ChooseSourceUiState.Choose>() ?: return@withLockOn
 
     valorantApiRepository.getAccount(
-      snapshot.riotId,
-      snapshot.tagline,
+      snapshot.modal.riotId,
+      snapshot.modal.tagline,
     )
       .onSuccess { account ->
         localPrefRepository.setPlayerId(account.playerId)
 
-        rawUiState.updateIfChoose { it.copy(errorTextOnModal = null) }
+        rawUiState.updateIfChoose { it.copy(modal = it.modal.copy(errorText = null)) }
         // TODO: transit
       }
       .onFailure { error ->
         rawUiState.updateIfChoose {
           it.copy(
-            errorTextOnModal = when (error) {
-              is ValorantApiRepository.Error.SerializationError -> StringResource(ResR.string.error_serialization)
-              is ValorantApiRepository.Error.ApiError -> error.error.errorMessageResource
-              else -> StringResource(ResR.string.error_unknown, error)
-            }
+            modal = it.modal.copy(
+              errorText = when (error) {
+                is ValorantApiRepository.Error.SerializationError -> StringResource(ResR.string.error_serialization)
+                is ValorantApiRepository.Error.ApiError -> error.error.errorMessageResource
+                else -> StringResource(ResR.string.error_unknown, error)
+              },
+            ),
           )
         }
       }

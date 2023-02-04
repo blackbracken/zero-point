@@ -47,7 +47,7 @@ class ChooseSourceViewModelTest {
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
       UiStateScenario
         .beginsWith(ChooseSourceUiState.Initial)
-        .then { copy(riotId = riotId) }
+        .then { copy(modal = modal.copy(riotId = riotId)) }
     )
   }
 
@@ -63,7 +63,7 @@ class ChooseSourceViewModelTest {
     uiStateObserver.cancelAndCollectAll().shouldFollowUiStateScenario(
       UiStateScenario
         .beginsWith(ChooseSourceUiState.Initial)
-        .then { copy(tagline = tagline) }
+        .then { copy(modal = modal.copy(tagline = tagline)) }
     )
   }
 
@@ -94,7 +94,7 @@ class ChooseSourceViewModelTest {
           .then {
             copy(
               inTransaction = false,
-              errorTextOnModal = null,
+              modal = modal.copy(errorText = null),
             )
           }
       )
@@ -127,7 +127,7 @@ class ChooseSourceViewModelTest {
           .then {
             copy(
               inTransaction = false,
-              errorTextOnModal = error.error.errorMessageResource,
+              modal = modal.copy(errorText = error.error.errorMessageResource),
             )
           }
       )

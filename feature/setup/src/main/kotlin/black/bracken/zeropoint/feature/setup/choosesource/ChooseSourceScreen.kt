@@ -150,10 +150,10 @@ private fun ChooseSourceChooseContent(
     sheetContent = {
       LoadIndicatorCover(isLoading = uiState.inTransaction) {
         InputPlayerNameModalBottomSheetContent(
-          riotId = uiState.riotId,
-          tagline = uiState.tagline,
+          riotId = uiState.modal.riotId,
+          tagline = uiState.modal.tagline,
           canInteract = !uiState.inTransaction,
-          errorText = uiState.errorTextOnModal?.getString(context),
+          errorText = uiState.modal.errorText?.getString(context),
           onChangeRiotId = uiAction.onChangeRiotId,
           onChangeTagline = uiAction.onChangeTagline,
           onConfirmPlayerName = uiAction.onConfirmPlayerName,
