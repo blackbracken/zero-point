@@ -1,5 +1,5 @@
 [versions]
-android = "7.4.0"
+android = "7.4.2"
 androidxCore = "1.9.0"
 kotlin = "1.7.20"
 kotlinxCoroutines = "1.6.4"
