@@ -2,6 +2,7 @@ package black.bracken.zeropoint.data.infra.repo.valorantapi
 
 import black.bracken.zeropoint.data.infra.repo.valorantapi.response.mapToAccount
 import black.bracken.zeropoint.data.kernel.model.Account
+import black.bracken.zeropoint.data.kernel.model.Match
 import black.bracken.zeropoint.data.kernel.model.PlayerId
 import black.bracken.zeropoint.data.kernel.repo.ValorantApiRepository
 import black.bracken.zeropoint.util.Res
@@ -33,6 +34,10 @@ class RemoteValorantApiRepository(
         success = { it.mapToAccount() },
         failure = { it.mapToDomainError() },
       )
+  }
+
+  override suspend fun getMatches(): Res<List<Match>, ValorantApiRepository.Error> {
+    return TODO()
   }
 
   private fun UnofficialValorantApiDataSource.Error.mapToDomainError(): ValorantApiRepository.Error =

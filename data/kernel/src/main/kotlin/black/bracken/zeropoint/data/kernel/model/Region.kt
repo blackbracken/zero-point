@@ -8,6 +8,8 @@ enum class Region {
   KR,
   ;
 
+  val raw: String get() = name.lowercase()
+
   companion object {
     fun from(raw: String): Region = Region.valueOf(raw.uppercase())
   }
